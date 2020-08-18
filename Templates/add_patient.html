@@ -1,8 +1,13 @@
 {% extends "base.html" %}
-
-{% block content %}
+{% block head %}
+  <title>Add Patient</title>
+{% endblock %}
+{% block body %}
 <div class="jumbotron">
-  <h1>Add Patient</h1>
+  <h1 class="display-4">Add a New Patient</h1>
+  <p class="lead">Use this page to add new patients to the database. </p>
+  <hr class="my-4">
+  <p>Click the "Add Patient" button to begin.</p>
+  <a class="btn btn-primary btn-lg" href="/see_patients/new_patient_form" role="button">Add New Patient</a>
 </div>
-
 {% endblock %}

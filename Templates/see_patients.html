@@ -1,8 +1,23 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 
-{% block content %}
-<div class="jumbotron">
-  <h1>See Patients</h1>
-</div>
+{% block head %} 
+    <title>See Patients</title>
+{% endblock %}
+
+
+{% block body %} 
+    <br>    
+    <div>
+        <h1 style="display:inline">All Patients</h1>
+    </div>
+    <hr>
+    {% for patient in see_patients %}
+        <h2>{{ patient.name }}</h2>
+
+        <p style="white-space:pre-wrap">Age: {{ patient.age }} Date Admitted: {{ patient.date_admitted }}</p>
+        <a class='btn btn-danger' href='/see_patients/delete/{{ patient.id }}'>Delete</a>
+        <a class='btn btn-primary' href='/see_patients/edit/{{ patient.id }}'>Edit</a>
+        <hr>
+    {% endfor %}
 
 {% endblock %}

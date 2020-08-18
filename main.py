@@ -7,11 +7,12 @@ from werkzeug.utils import redirect
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///patients.db'
 db = SQLAlchemy(app)
+
 class PatientInfo(db.Model):
-    id = db.Column(db.integer, primary_key=True, nullable=False)
+    id = db.Column(db.Integer, primary_key=True, nullable=False)
     name = db.Column(db.String(20), nullable=False)
-    age = db.Column(db.integer(3), nullable=False)
-    date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    age = db.Column(db.Integer, nullable=False)
+    date_admitted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
 
     def __repr__(self):
         return 'PatientID:' + str(self.id)
@@ -24,9 +25,51 @@ def index():
 def add_patient():
     return render_template("add_patient.html")
 
-@app.route("/see_patients")
-def see_patient():
-    return render_template("see_patients.html")
+@app.route("/see_patients", methods=['GET', 'POST'])
+def see_patients():
+    if request.method == 'POST':
+        patient_name = request.form['name']
+        patient_age = request.form['age']
+        new_patient = PatientInfo(name=patient_name, age=patient_age)
+        db.session.add(new_patient)
+        db.session.commit()
+        return redirect('/see_patients')
+    else:
+        all_patients = PatientInfo.query.order_by(PatientInfo.date_admitted).all()
+        return render_template('see_patients.html', see_patients=all_patients)
 
-if __name__ == '__main__':
+@app.route("/see_patients/new_patient_form")
+def addPatientForm():
+    if request.method == 'POST':
+        patient = PatientInfo.query.get_or_404(id)
+        patient.name = request.form['name']
+        patient.age = request.form['age']
+        new_patient = PatientInfo(name=patient_name, age=patient_age)
+        db.session.add(new_patient)
+        db.session.commit()
+        return redirect('/see_patients') 
+    else:
+        return render_template('new_patient_form.html')
+
+@app.route('/see_patients/delete/<int:id>')
+def delete(id):
+    patient = PatientInfo.query.get_or_404(id)
+    db.session.delete(patient)
+    db.session.commit()
+    return redirect('/see_patients')
+
+@app.route('/see_patients/edit/<int:id>', methods=['GET', 'POST'])
+def edit(id):
+    patient = PatientInfo.query.get_or_404(id)
+    if request.method == 'POST':
+        patient = PatientInfo.query.get_or_404(id)
+        patient.name = request.form['title']
+        patient.age = request.form['author']
+        db.session.commit()
+        return redirect('/see_patients') 
+    else:
+        return render_template('edit.html', patient=patient)  
+
+
+if __name__ == '__main__': 
     app.run(debug=True)
