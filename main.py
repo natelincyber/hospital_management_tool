@@ -14,7 +14,7 @@ class PatientInfo(db.Model):
     age = db.Column(db.Integer, nullable=False)
     date_admitted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
 
-    def __repr__(self):
+    def __str__(self):
         return 'PatientID:' + str(self.id)
 
 @app.route("/")
