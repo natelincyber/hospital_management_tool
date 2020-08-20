@@ -11,7 +11,8 @@ db = SQLAlchemy(app)
 
 class PatientInfo(db.Model):
     id = db.Column(db.Integer, primary_key=True, nullable=False)
-    name = db.Column(db.String(20), nullable=False)
+    firstName = db.Column(db.String(20), nullable=False)
+    lastName = db.Column(db.String(20), nullable=False)
     age = db.Column(db.Integer, nullable=False)
     state = db.Column(db.Boolean, default=False)
     date_admitted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
@@ -30,10 +31,11 @@ def add_patient():
 @app.route("/see_patients", methods=['GET', 'POST'])
 def see_patients():
     if request.method == 'POST':
-        patient_name = request.form['name']
+        patient_first = request.form['first']
+        patient_last = request.form['last']
         patient_age = request.form['age']
         patient_state = request.form['state']
-        new_patient = PatientInfo(name=patient_name, age=patient_age, state=patient_state)
+        new_patient = PatientInfo(firstName=patient_first, lastName=patient_last, age=patient_age, state=patient_state)
         db.session.add(new_patient)
         db.session.commit()
         return redirect('/see_patients')
@@ -45,10 +47,11 @@ def see_patients():
 def addPatientForm():
     if request.method == 'POST':
         patient = PatientInfo.query.get_or_404(id)
-        patient.name = request.form['name']
+        patient.firstName = request.form['first']
+        patient.lastName = request.form['last']
         patient.age = request.form['age']
         patient.state = request.form['state']
-        new_patient = PatientInfo(name=patient_name, age=patient_age, state=patient_state)
+        new_patient = PatientInfo(firstName=patient_first, lastName=patient_last, age=patient_age, state=patient_state)
         db.session.add(new_patient)
         db.session.commit()
         return redirect('/see_patients') 
@@ -67,7 +70,8 @@ def edit(id):
     patient = PatientInfo.query.get_or_404(id)
     if request.method == 'POST':
         patient = PatientInfo.query.get_or_404(id)
-        patient.name = request.form['name']
+        patient.firstName = request.form['first']
+        patient.LastName = request.form['last']
         patient.age = request.form['age']
         patient.state = request.form['state']
         db.session.commit()
