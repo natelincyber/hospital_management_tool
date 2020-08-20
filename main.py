@@ -13,6 +13,7 @@ class PatientInfo(db.Model):
     id = db.Column(db.Integer, primary_key=True, nullable=False)
     name = db.Column(db.String(20), nullable=False)
     age = db.Column(db.Integer, nullable=False)
+    state = db.Column(db.Boolean, default=False)
     date_admitted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
 
     def __str__(self):
@@ -31,7 +32,8 @@ def see_patients():
     if request.method == 'POST':
         patient_name = request.form['name']
         patient_age = request.form['age']
-        new_patient = PatientInfo(name=patient_name, age=patient_age)
+        patient_state = request.form['state']
+        new_patient = PatientInfo(name=patient_name, age=patient_age, state=patient_state)
         db.session.add(new_patient)
         db.session.commit()
         return redirect('/see_patients')
@@ -45,7 +47,8 @@ def addPatientForm():
         patient = PatientInfo.query.get_or_404(id)
         patient.name = request.form['name']
         patient.age = request.form['age']
-        new_patient = PatientInfo(name=patient_name, age=patient_age)
+        patient.state = request.form['state']
+        new_patient = PatientInfo(name=patient_name, age=patient_age, state=patient_state)
         db.session.add(new_patient)
         db.session.commit()
         return redirect('/see_patients') 
@@ -66,6 +69,7 @@ def edit(id):
         patient = PatientInfo.query.get_or_404(id)
         patient.name = request.form['name']
         patient.age = request.form['age']
+        patient.state = request.form['state']
         db.session.commit()
         return redirect('/see_patients') 
     else:
