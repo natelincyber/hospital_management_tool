@@ -15,6 +15,8 @@ class PatientInfo(db.Model):
     lastName = db.Column(db.String(20), nullable=False)
     age = db.Column(db.Integer, nullable=False)
     state = db.Column(db.Boolean, default=False)
+    gender = db.Column(db.String(20), nullable=False)
+    medID = db.Column(db.Integer, nullable=False)
     date_admitted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
 
     def __str__(self):
@@ -35,7 +37,9 @@ def see_patients():
         patient_last = request.form['last']
         patient_age = request.form['age']
         patient_state = request.form['state']
-        new_patient = PatientInfo(firstName=patient_first, lastName=patient_last, age=patient_age, state=patient_state)
+        patient_gender = request.form['gender']
+        patient_medID = request.form['medID']
+        new_patient = PatientInfo(firstName=patient_first, lastName=patient_last, age=patient_age, state=patient_state, gender=patient_gender, medID=patient_medID)
         db.session.add(new_patient)
         db.session.commit()
         return redirect('/see_patients')
@@ -51,7 +55,9 @@ def addPatientForm():
         patient.lastName = request.form['last']
         patient.age = request.form['age']
         patient.state = request.form['state']
-        new_patient = PatientInfo(firstName=patient_first, lastName=patient_last, age=patient_age, state=patient_state)
+        patient.gender = request.form['gender']
+        patient.medID = request.form['medID']
+        new_patient = PatientInfo(firstName=patient_first, lastName=patient_last, age=patient_age, state=patient_state, gender=patient_gender, medID=patient_medID)
         db.session.add(new_patient)
         db.session.commit()
         return redirect('/see_patients') 
@@ -74,6 +80,8 @@ def edit(id):
         patient.LastName = request.form['last']
         patient.age = request.form['age']
         patient.state = request.form['state']
+        patient.gender = request.form['gender']
+        patient.medID = request.form['medID']       
         db.session.commit()
         return redirect('/see_patients') 
     else:
