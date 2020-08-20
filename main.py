@@ -70,6 +70,10 @@ def edit(id):
     else:
         return render_template('edit.html', patient=patient)  
 
+@app.route('/about_hospitalhero')
+def about():
+    return render_template('about_hospitalhero.html')
+
 
 if __name__ == '__main__': 
     app.run(debug=True)
