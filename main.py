@@ -63,8 +63,8 @@ def edit(id):
     patient = PatientInfo.query.get_or_404(id)
     if request.method == 'POST':
         patient = PatientInfo.query.get_or_404(id)
-        patient.name = request.form['title']
-        patient.age = request.form['author']
+        patient.name = request.form['name']
+        patient.age = request.form['age']
         db.session.commit()
         return redirect('/see_patients') 
     else:
