@@ -13,31 +13,33 @@
 {% endblock %}
 
 {% block body %}
-    <h1>Edit Patient Info</h1>
+    <div class="container">
+        <h1>Edit Patient Informtion</h1>
         <hr>
-        <h2>Edit:</h2>
         <form action='/see_patients/edit/{{ patient.id }}' method='POST'>
-            <label for="name">Patient Name</label> 
-            <input
-                class="form-control"
-                type="text"
-                name='name' 
-                id='name'
-                value="{{ patient.name }}"
-                aria-label="Edit Patient Name"
-            />
-            <br>
-            <label for="age">Age:</label> 
-            <input
-                class="form-control"
-                type="number"
-                name='age' 
-                id='age'
-                value="{{ patient.age }}"
-                aria-label="Edit patient age"
-            />
-            <br>
-            <input type='submit' value='Save'>
-        </form>
+        <label for="name" class="lead">Patient Name</label> 
+        <input
+            class="form-control"
+            type="text"
+            name='name' 
+            id='name'
+            value="{{ patient.name }}"
+            aria-label="Edit Patient Name"
+        />
+        <br>
+        <label for="age" class="lead">Age:</label> 
+        <input
+            class="form-control"
+            type="number"
+            name='age' 
+            id='age'
+            value="{{ patient.age }}"
+            aria-label="Edit patient age"
+        />
+        <br>
+        <input class="btn btn-primary" type="submit" value="Submit">
+    </form>
+</div>
+    
 
 {% endblock %}
