@@ -1,49 +1,100 @@
 {% extends 'base.html' %}
 
+{% block head %}
+
+<style>
+.card{
+    margin: auto;
+    float: none;
+    margin-bottom: 10px;
+}
+</style>
+
+{% endblock %}
+
 {% block title %}New Patient{% endblock %}
 
 {% block body %}
-    <div class="container">
-    <br>
-    <h1>Add New Patient</h1>
-    <hr>
-    <form action='/see_patients' method='POST'>
-        <div class="row">
-            <div class="col">
-                <input
-                class="form-control"
-                type="text"
-                name='name' 
-                id='name'
-                placeholder="Patient First Name"
-                aria-label="Patient First Name"
-                />
-            </div>
-            <div class="col">
-                <input
-                class="form-control"
-                type="text"
-                name='name' 
-                id='name'
-                placeholder="Patient Last Name"
-                aria-label="Patient Last Name"
-                />
-            </div>
+    <div class="card border-primary text-white bg-secondary mb-3" style="max-width: 40rem; text-align: center;">
+        <h1 class="card-header">Add New Patient</h1>
+        <div class="card-body">
+            <form action='/see_patients' method='POST'>
+                <div class="row">
+                    <div class="col-6">
+                        <input
+                        class="form-control"
+                        type="text"
+                        name='name' 
+                        id='name'
+                        placeholder="Patient First Name"
+                        aria-label="Patient First Name"
+                        />
+                    </div>
+                    <div class="col-6">
+                        <input
+                        class="form-control"
+                        type="text"
+                        name='name' 
+                        id='name'
+                        placeholder="Patient Last Name"
+                        aria-label="Patient Last Name"
+                        />
+                    </div>
+                <br>
+                <br>
+                <br>
+                <div class="row">
+                    <div class="col-6">
+                        <input
+                        class="form-control"
+                        type="boolean"
+                        name="state"
+                        id="state"
+                        placeholder="Yes/no"
+                        aria-label="Do you have COVID-19?"
+                        >
+                    </div>
+                    <div class="col-6">
+                        <input
+                        class="form-control"
+                        type="number"
+                        name="medID"
+                        id="medID"
+                        placeholder="Medical Identification Number"
+                        aria-label="Medical Identification Number"
+                        >
+                    </div>
+                </div>
+                <br>
+                <br>
+                <br>
+                <div class="row">
+                    <div class="col-6">
+                        <input
+                        class="form-control"
+                        type="number"
+                        name='age' 
+                        id='age'
+                        placeholder="Patient Age"
+                        aria-label="Patient Age"
+                        />
+                    </div>
+                    <div class="col-6">
+                        <input
+                        class="form-control"
+                        type="text"
+                        name='gender' 
+                        id='gender'
+                        placeholder="Gender"
+                        aria-label="Gender"
+                        />
+                    </div>
+                </div>
+                </div>
+                <br>
+                <input class="btn btn-primary" type="submit" value="Submit">
+            </form>
         </div>
-
-        <br>
-
-        <input
-            class="form-control"
-            type="number"
-            name='age' 
-            id='age'
-            placeholder="Enter Patient Age"
-            aria-label="Enter Patient Age"
-        />
-        <br>
-        <input class="btn btn-primary" type="submit" value="Submit">
-    </form>
     </div>
 
 {% endblock %}
