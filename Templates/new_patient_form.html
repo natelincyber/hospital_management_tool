@@ -2,32 +2,34 @@
 
 {% block title %}New Patient{% endblock %}
 
-{% block body %} 
-    <h1>New Patient</h1>
-        <hr>
-        <h2>Add New Patient:</h2>
-        <form action='/see_patients' method='POST'>
-            <label for="name">Name:</label> 
-            <input
-                class="form-control"
-                type="text"
-                name='name' 
-                id='name'
-                placeholder="Enter Patient Name"
-                aria-label="Enter Patient Name"
-            />
-            <br>
-            <label for="age">Age</label> 
-            <input
-                class="form-control"
-                type="number"
-                name='age' 
-                id='age'
-                placeholder="Enter Patient Age"
-                aria-label="Enter Patient Age"
-            />
-            <br>
-            <input type='submit' value='Add Patient'>
-        </form>
+{% block body %}
+    <div class="container">
+    <br>
+    <h1>Add New Patient</h1>
+    <hr>
+    <form action='/see_patients' method='POST'>
+        <label for="name">Name:</label> 
+        <input
+            class="form-control"
+            type="text"
+            name='name' 
+            id='name'
+            placeholder="Enter Patient Name"
+            aria-label="Enter Patient Name"
+        />
+        <br>
+        <label for="age">Age</label> 
+        <input
+            class="form-control"
+            type="number"
+            name='age' 
+            id='age'
+            placeholder="Enter Patient Age"
+            aria-label="Enter Patient Age"
+        />
+        <br>
+        <input class="btn btn-primary" type="submit" value="Submit">
+    </form>
+    </div>
 
 {% endblock %}
