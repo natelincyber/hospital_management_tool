@@ -18,18 +18,16 @@
                          <li class="nav-item active">
                               <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a>
                          </li>
-                         <li class="nav-item">
+                         <li class="nav-item active">
                               <a class="nav-link" href="/add_patient">Add New Patient<span class="sr-only">(current)</span></a>
                          </li>
-                         <li class="nav-item">
+                         <li class="nav-item active">
                               <a class="nav-link" href="/see_patients">See Existing Patients<span class="sr-only">(current)</span></a>
                          </li>
                     </ul>
                </div>
           </nav>
-          <div class="container-fluid px-0 mx-0">
-               {% block body %}
-               {% endblock %}
-          </div>
+          {% block body %}
+          {% endblock %}
      </body>
 </html>
