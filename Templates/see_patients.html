@@ -9,10 +9,15 @@
         <h1 style="display:inline">All Patients</h1>
     </div>
     <hr>
+    
+    {% if see_patients|length == 0 %}
+        <p style="white-space:pre-wrap">You have no patients. Go to the add patient menu to add a new patient!</p>
+    {% endif %}
+
     {% for patient in see_patients %}
         <h2>{{ patient.name }}</h2>
-
-        <p style="white-space:pre-wrap">Age: {{ patient.age }} Date Admitted: {{ patient.date_admitted }}</p>
+            
+        <p style="white-space:pre-wrap">Age: {{ patient.age }} Date Admitted: {{ patient.date_admitted.date() }}</p>
         <a class='btn btn-danger' href='/see_patients/delete/{{ patient.id }}'>Delete</a>
         <a class='btn btn-primary' href='/see_patients/edit/{{ patient.id }}'>Edit</a>
         <hr>
