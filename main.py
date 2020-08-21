@@ -1,3 +1,4 @@
+
 from flask import Flask, render_template, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
@@ -17,6 +18,7 @@ class PatientInfo(db.Model):
     state = db.Column(db.String(20), default=False)
     gender = db.Column(db.String(20), nullable=False)
     medID = db.Column(db.Integer, nullable=False)
+    cureTime = db.Column(db.Integer, nullable=False)
     date_admitted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
 
     def __str__(self):
@@ -25,10 +27,6 @@ class PatientInfo(db.Model):
 @app.route("/")
 def index():
     return render_template("index.html")
-
-@app.route("/add_patient")
-def add_patient():
-    return render_template("add_patient.html")
 
 @app.route("/see_patients", methods=['GET', 'POST'])
 def see_patients():
@@ -39,7 +37,8 @@ def see_patients():
         patient_state = request.form['state']
         patient_gender = request.form['gender']
         patient_medID = request.form['medID']
-        new_patient = PatientInfo(firstName=patient_first, lastName=patient_last, age=patient_age, state=patient_state, gender=patient_gender, medID=patient_medID)
+        patient_cureTime = request.form['cureTime']
+        new_patient = PatientInfo(firstName=patient_first, lastName=patient_last, age=patient_age, state=patient_state, gender=patient_gender, medID=patient_medID, cureTime=patient_cureTime)
         db.session.add(new_patient)
         db.session.commit()
         return redirect('/see_patients')
@@ -57,7 +56,8 @@ def addPatientForm():
         patient.state = request.form['state']
         patient.gender = request.form['gender']
         patient.medID = request.form['medID']
-        new_patient = PatientInfo(firstName=patient_first, lastName=patient_last, age=patient_age, state=patient_state, gender=patient_gender, medID=patient_medID)
+        patient_cureTime = request.form['cureTime']
+        new_patient = PatientInfo(firstName=patient_first, lastName=patient_last, age=patient_age, state=patient_state, gender=patient_gender, medID=patient_medID, cureTime=patient_cureTime)
         db.session.add(new_patient)
         db.session.commit()
         return redirect('/see_patients') 
@@ -81,11 +81,13 @@ def edit(id):
         patient.age = request.form['age']
         patient.state = request.form['state']
         patient.gender = request.form['gender']
-        patient.medID = request.form['medID']       
+        patient.medID = request.form['medID'] 
+        patient.cureTime = request.form['cureTime']      
         db.session.commit()
         return redirect('/see_patients') 
     else:
         return render_template('edit.html', patient=patient)  
+
 
 @app.route('/about_hospitalhero')
 def about():

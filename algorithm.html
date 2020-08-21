@@ -1,0 +1,5 @@
+from main import PatientInfo
+
+patient = PatientInfo.query.get_or_404(1)
+
+print(patient.firstName)
