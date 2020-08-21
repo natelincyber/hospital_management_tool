@@ -1,5 +1,10 @@
 {% extends 'base.html' %}
 
+{% block head %}
+
+
+{% endblock %}
+
 {% block title %}See Patients{% endblock %}
 
 
@@ -14,41 +19,93 @@
         <p style="white-space:pre-wrap">You have no patients. Go to the add patient menu to add a new patient!</p>
     {% endif %}
 
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h5>Room Number</h5>
+        </div>
+        <div class="col">
+            <h5>Patient</h5>
+        </div>
+        <div class="col">
+            <h5>Illness</h5>
+        </div>
+        <div class="col">
+            <h5>Gender</h5>
+        </div>
+        <div class="col">
+            <h5>Age</h5>
+        </div>
+        <div class="col">
+            <h5>Date Admitted</h5>
+        </div>
+    </div>
+    
     {% for patient in see_patients %}
-<<<<<<< HEAD
-        <h2>{{ patient.firstName }} {{patient.lastName}}</h2>
-        <h3>{{ patient.gender }} {{ patient.state }} {{ patient.medID }}</h3>
-=======
 
-        {% if patient.firstName %}
-            <h2>{{ patient.firstName }} {{patient.lastName}}</h2>
-        {% else %}
-            <h2>No patient name found</h2>
-        {% endif %}
+        <div class="container">
+            <div class="row">
+                <div class="col-11">
+                    <div class="card" style="width: 70rem;">
 
-        {% if patient.gender %}
-            <h2>Gender: {{patient.gender}}</h2>
-        {% else %}
-            <h2>No gender found</h2>
-        {% endif %}
+                        <div class="card-body">
+                        
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col">
+                                        <p class="card-text">Room 1</p>
+                                    </div>
+                                    <div class="col">
+                                        {% if patient.firstName and patient.lastName and patient.medID %}
+                                            <p class="card-text">{{ patient.firstName }} {{patient.lastName}} - {{ patient.medID }}</p>
+                                        {% else %}
+                                            <p class="card-text">Patient name was not recorded!</p>
+                                        {% endif %}
+                                    </div>
+                                    <div class="col">
+                                        {% if patient.gender %}
+                                        <p class="card-text">Gender: {{ patient.gender }}</p>
+                                        {% else %}
+                                            <p class="card-text">No gender recorded!</p>
+                                        {% endif %}
+                                    </div>
+                                    <div class="col">
+                                        {% if patient.state %}
+                                        <p class="card-text">Illness: {{ patient.state }}</p>
+                                        {% else %}
+                                            <p class="card-text">No illness recorded!</p>
+                                        {% endif %}
+                                    </div>
+                                    <div class="col">
+                                        {% if patient.age %}
+                                            <p class="card-text">Age: {{ patient.age }}</p>
+                                        {% else %}
+                                            <p class="card-text">No age recorded!</p>
+                                        {% endif %}
+                                    </div>
+                                    <div class="col">
+                                        <p class="card-text">Date Admitted: {{ patient.date_admitted.date() }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-1">
+                    <div class="row">
+                        <a class='btn btn-danger' href='/see_patients/delete/{{ patient.id }}'>Delete</a>
+                    </div>
+                    <div class="row">
+                        <a class='btn btn-primary' href='/see_patients/edit/{{ patient.id }}'>Edit</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
 
-        {% if patient.state %}
-            <h2>Illness: {{ patient.state }}</h2>
-        {% else %}
-            <h2>No illness found</h2>
-        {% endif %}
-  
-        {% if patient.state %}
-            <h2>Medical Identification {{ patient.medID }}</h2>
-        {% else %}
-            <h2>No Medical Identification Found</h2>
-        {% endif %}
->>>>>>> 72f504e9d4d6179608f34cb78e69650a8f52be25
-            
-        <p style="white-space:pre-wrap">Age: {{ patient.age }} Date Admitted: {{ patient.date_admitted.date() }}</p>
-        <a class='btn btn-danger' href='/see_patients/delete/{{ patient.id }}'>Delete</a>
-        <a class='btn btn-primary' href='/see_patients/edit/{{ patient.id }}'>Edit</a>
-        <hr>
     {% endfor %}
+    
+</div>
 
 {% endblock %}
