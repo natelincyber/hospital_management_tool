@@ -15,7 +15,7 @@
     {% endif %}
 
     {% for patient in see_patients %}
-        <h2>{{ patient.firstName }}{{patient.lastName}}</h2>
+        <h2>{{ patient.firstName }} {{patient.lastName}}</h2>
         <h3>{{ patient.gender }} {{ patient.state }} {{ patient.medID }}</h3>
             
         <p style="white-space:pre-wrap">Age: {{ patient.age }} Date Admitted: {{ patient.date_admitted.date() }}</p>
