@@ -14,7 +14,7 @@ class PatientInfo(db.Model):
     firstName = db.Column(db.String(20), nullable=False)
     lastName = db.Column(db.String(20), nullable=False)
     age = db.Column(db.Integer, nullable=False)
-    state = db.Column(db.Boolean, default=False)
+    state = db.Column(db.String(20), default=False)
     gender = db.Column(db.String(20), nullable=False)
     medID = db.Column(db.Integer, nullable=False)
     date_admitted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
@@ -33,8 +33,8 @@ def add_patient():
 @app.route("/see_patients", methods=['GET', 'POST'])
 def see_patients():
     if request.method == 'POST':
-        patient_first = request.form['first']
-        patient_last = request.form['last']
+        patient_first = request.form['firstName']
+        patient_last = request.form['lastName']
         patient_age = request.form['age']
         patient_state = request.form['state']
         patient_gender = request.form['gender']
@@ -51,8 +51,8 @@ def see_patients():
 def addPatientForm():
     if request.method == 'POST':
         patient = PatientInfo.query.get_or_404(id)
-        patient.firstName = request.form['first']
-        patient.lastName = request.form['last']
+        patient.firstName = request.form['firstName']
+        patient.lastName = request.form['lastName']
         patient.age = request.form['age']
         patient.state = request.form['state']
         patient.gender = request.form['gender']
@@ -76,8 +76,8 @@ def edit(id):
     patient = PatientInfo.query.get_or_404(id)
     if request.method == 'POST':
         patient = PatientInfo.query.get_or_404(id)
-        patient.firstName = request.form['first']
-        patient.LastName = request.form['last']
+        patient.firstName = request.form['firstName']
+        patient.LastName = request.form['lastName']
         patient.age = request.form['age']
         patient.state = request.form['state']
         patient.gender = request.form['gender']

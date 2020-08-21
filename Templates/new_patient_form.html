@@ -21,21 +21,23 @@
             <form action='/see_patients' method='POST'>
                 <div class="row">
                     <div class="col-6">
+                        <label for='firstName' class="lead"><b>Patient's First Name</b></label>
                         <input
                         class="form-control"
                         type="text"
-                        name='name' 
-                        id='name'
+                        name='firstName' 
+                        id='firstName'
                         placeholder="Patient First Name"
                         aria-label="Patient First Name"
                         />
                     </div>
                     <div class="col-6">
+                        <label for='lastName' class="lead"><b>Patient's Last Name</b></label>
                         <input
                         class="form-control"
                         type="text"
-                        name='name' 
-                        id='name'
+                        name='lastName' 
+                        id='lastName'
                         placeholder="Patient Last Name"
                         aria-label="Patient Last Name"
                         />
@@ -45,16 +47,18 @@
                 <br>
                 <div class="row">
                     <div class="col-6">
+                        <label for='state' class="lead"><b>Does the patient have COVID-19?</b></label>
                         <input
                         class="form-control"
-                        type="boolean"
+                        type="text"
                         name="state"
                         id="state"
-                        placeholder="Yes/no"
-                        aria-label="Do you have COVID-19?"
-                        >
+                        placeholder="Yes/No"
+                        aria-label="Do the patient have COVID-19?"
+                        />
                     </div>
                     <div class="col-6">
+                        <label for='medID' class="lead"><b>Pateint's Medical ID</b></label>
                         <input
                         class="form-control"
                         type="number"
@@ -62,7 +66,7 @@
                         id="medID"
                         placeholder="Medical Identification Number"
                         aria-label="Medical Identification Number"
-                        >
+                        />
                     </div>
                 </div>
                 <br>
@@ -70,6 +74,7 @@
                 <br>
                 <div class="row">
                     <div class="col-6">
+                        <label for='age' class="lead"><b>Pateint's age</b></label>
                         <input
                         class="form-control"
                         type="number"
@@ -80,6 +85,7 @@
                         />
                     </div>
                     <div class="col-6">
+                        <label for='gender' class="lead"><b>Pateint's Gender</b></label>
                         <input
                         class="form-control"
                         type="text"

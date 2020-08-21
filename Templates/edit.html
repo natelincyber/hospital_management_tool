@@ -15,13 +15,22 @@
         <hr>
         <form action='/see_patients/edit/{{ patient.id }}' method='POST'>
         <br>
-        <label for="name" class="lead"><b>Patient Name</b></label> 
+        <label for="firstName" class="lead"><b>Patient Name</b></label> 
         <input
             class="form-control"
             type="text"
             name='name' 
             id='name'
-            value="{{ patient.name }}"
+            value="{{ patient.firstName }}"
+            aria-label="Edit Patient Name"
+        />
+        <label for="firstName" class="lead"><b>Patient Name</b></label> 
+        <input
+            class="form-control"
+            type="text"
+            name='lastName' 
+            id='lastName'
+            value="{{ patient.lastName }}"
             aria-label="Edit Patient Name"
         />
         <br>
@@ -33,6 +42,33 @@
             id='age'
             value="{{ patient.age }}"
             aria-label="Edit patient age"
+        />
+        <label for='state' class="lead"><b>Does the patient have COVID-19?</b></label>
+        <input
+            class="form-control"
+            type="text"
+            name="state"
+            id="state"
+            placeholder="Yes/No"
+            aria-label="Do the patient have COVID-19?"
+        />
+        <label for='gender' class="lead"><b>Pateint's Gender</b></label>
+        <input
+            class="form-control"
+            type="text"
+            name='gender' 
+            id='gender'
+            placeholder="Gender"
+            aria-label="Gender"
+        />
+        <label for='medID' class="lead"><b>Pateint's Medical ID</b></label>
+        <input
+            class="form-control"
+            type="number"
+            name="medID"
+            id="medID"
+            placeholder="Medical Identification Number"
+            aria-label="Medical Identification Number"
         />
         <br>
         <input class="btn btn-primary" type="submit" value="Submit">
