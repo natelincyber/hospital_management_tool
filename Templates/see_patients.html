@@ -15,8 +15,35 @@
     {% endif %}
 
     {% for patient in see_patients %}
+<<<<<<< HEAD
         <h2>{{ patient.firstName }} {{patient.lastName}}</h2>
         <h3>{{ patient.gender }} {{ patient.state }} {{ patient.medID }}</h3>
+=======
+
+        {% if patient.firstName %}
+            <h2>{{ patient.firstName }} {{patient.lastName}}</h2>
+        {% else %}
+            <h2>No patient name found</h2>
+        {% endif %}
+
+        {% if patient.gender %}
+            <h2>Gender: {{patient.gender}}</h2>
+        {% else %}
+            <h2>No gender found</h2>
+        {% endif %}
+
+        {% if patient.state %}
+            <h2>Illness: {{ patient.state }}</h2>
+        {% else %}
+            <h2>No illness found</h2>
+        {% endif %}
+  
+        {% if patient.state %}
+            <h2>Medical Identification {{ patient.medID }}</h2>
+        {% else %}
+            <h2>No Medical Identification Found</h2>
+        {% endif %}
+>>>>>>> 72f504e9d4d6179608f34cb78e69650a8f52be25
             
         <p style="white-space:pre-wrap">Age: {{ patient.age }} Date Admitted: {{ patient.date_admitted.date() }}</p>
         <a class='btn btn-danger' href='/see_patients/delete/{{ patient.id }}'>Delete</a>
