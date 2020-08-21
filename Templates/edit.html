@@ -1,79 +1,102 @@
 {% extends 'base.html' %}
 
-{% block title %}Edit Patient Info{% endblock %}
-
 {% block head %}
 
 <style>
+.card{
+    margin: auto;
+    float: none;
+    margin-bottom: 10px;
+}
 </style>
 
 {% endblock %}
 
+{% block title %}New Patient{% endblock %}
+
 {% block body %}
-    <div class="container">
-        <h1>Edit Patient Informtion</h1>
-        <hr>
-        <form action='/see_patients/edit/{{ patient.id }}' method='POST'>
-        <br>
-        <label for="firstName" class="lead"><b>Patient Name</b></label> 
-        <input
-            class="form-control"
-            type="text"
-            name='name' 
-            id='name'
-            value="{{ patient.firstName }}"
-            aria-label="Edit Patient Name"
-        />
-        <label for="firstName" class="lead"><b>Patient Name</b></label> 
-        <input
-            class="form-control"
-            type="text"
-            name='lastName' 
-            id='lastName'
-            value="{{ patient.lastName }}"
-            aria-label="Edit Patient Name"
-        />
-        <br>
-        <label for="age" class="lead"><b>Age</b></label> 
-        <input
-            class="form-control"
-            type="number"
-            name='age' 
-            id='age'
-            value="{{ patient.age }}"
-            aria-label="Edit patient age"
-        />
-        <label for='state' class="lead"><b>Does the patient have COVID-19?</b></label>
-        <input
-            class="form-control"
-            type="text"
-            name="state"
-            id="state"
-            placeholder="Yes/No"
-            aria-label="Do the patient have COVID-19?"
-        />
-        <label for='gender' class="lead"><b>Pateint's Gender</b></label>
-        <input
-            class="form-control"
-            type="text"
-            name='gender' 
-            id='gender'
-            placeholder="Gender"
-            aria-label="Gender"
-        />
-        <label for='medID' class="lead"><b>Pateint's Medical ID</b></label>
-        <input
-            class="form-control"
-            type="number"
-            name="medID"
-            id="medID"
-            placeholder="Medical Identification Number"
-            aria-label="Medical Identification Number"
-        />
-        <br>
-        <input class="btn btn-primary" type="submit" value="Submit">
-    </form>
-</div>
-    
+    <div class="card border-primary text-white bg-secondary mb-3" style="max-width: 40rem; text-align: center;">
+        <h1 class="card-header">Add New Patient</h1>
+        <div class="card-body">
+            <form action='/see_patients/edit/{{ patient.id }}' method='POST'>
+                <div class="row">
+                    <div class="col-6">
+                        <label for='firstName' class="lead"><b>First Name</b></label>
+                        <input
+                        class="form-control"
+                        type="text"
+                        name='firstName' 
+                        id='firstName'
+                        value='{{patient.firstName}}'
+                        aria-label="First Name"
+                        />
+                    </div>
+                    <div class="col-6">
+                        <label for='lastName' class="lead"><b>Last Name</b></label>
+                        <input
+                        class="form-control"
+                        type="text"
+                        name='lastName' 
+                        id='lastName'
+                        value='{{patient.lastName}}'
+                        aria-label="Last Name"
+                        />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <label for='state' class="lead"><b>Type of Illness</b></label>
+                        <input
+                        class="form-control"
+                        type="text"
+                        name="state"
+                        id="state"
+                        value='{{patient.state}}'
+                        aria-label="Illness"
+                        />
+                    </div>
+                    <div class="col-6">
+                        <label for='medID' class="lead"><b>Medical ID</b></label>
+                        <input
+                        class="form-control"
+                        type="number"
+                        name="medID"
+                        id="medID"
+                        value='{{patient.medID}}'
+                        aria-label="Medical Identification Number"
+                        />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <label for='age' class="lead"><b>Age</b></label>
+                        <input
+                        class="form-control"
+                        type="number"
+                        name='age' 
+                        id='age'
+                        value='{{patient.age}}'
+                        aria-label="Age"
+                        />
+                    </div>
+                    <div class="col-6">
+                        <br>
+                        <br>
+                        <label for='gender' class="lead"><b>Gender:</b></label>
+                        <select  name='gender' id='gender' value='{{patient.gender}}'>
+                            <option value='None Selected'>None Selected</option>
+                            <option value='Male'>Male</option>
+                            <option value='Female'>Female</option>
+                            <option value='Other'>Other</option>
+                        </select>
+                    </div>
+                </div>           
+                <br>
+            
+            </div>
+            <input class="btn btn-primary" type="submit" value='Save'> 
+            </form>
+        </div>
+    </div>
 
 {% endblock %}

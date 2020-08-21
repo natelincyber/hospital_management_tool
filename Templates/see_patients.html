@@ -10,7 +10,7 @@
 
 {% block body %}
     {% if see_patients|length == 0 %}
-    <p style="white-space:pre-wrap">You have no patients. Go to the add patient menu to add a new patient!</p>
+        <p style="white-space:pre-wrap">You have no patients. Go to the add patient menu to add a new patient!</p>
     {% else %}
         <br>    
         <div>
@@ -23,7 +23,7 @@
                 <th scope="col">Medical Identification</th>
                 <th scope="col">Patient</th>
                 <th scope="col">Gender</th>
-                <th scope="col">State</th>
+                <th scope="col">Illness</th>
                 <th scope="col">Age</th>
                 <th scope="col">Date Admitted</th>
                 <th scope="col"></th>
@@ -33,46 +33,46 @@
             <tbody>
                 {% for patient in see_patients %}
 
-                <tr>
-                    <th scope="row" class="align-middle">
-                        {% if patient.medID %}
-                            {{ patient.medID }}
+                    <tr>
+                        <th scope="row" class="align-middle">
+                            {% if patient.medID %}
+                                {{ patient.medID }}
+                            {% else %}
+                                *
+                            {% endif %}
+                        </th>
+
+                        {% if patient.firstName and patient.lastName and patient.medID %}
+                            <td class="align-middle">{{ patient.firstName }} {{ patient.lastName }}</td>
                         {% else %}
-                            Medical identification was not recorded!
+                            <td class="align-middle">*</td>
                         {% endif %}
-                    </th>
 
-                    {% if patient.firstName and patient.lastName and patient.medID %}
-                        <td class="align-middle">{{ patient.firstName }} {{ patient.lastName }}</td>
-                    {% else %}
-                        <td class="align-middle">Patient name was not recorded!</td>
-                    {% endif %}
+                        {% if patient.gender %}
+                            <td class="align-middle">{{ patient.gender }}</td>
+                        {% else %}
+                            <td class="align-middle">*</td>
+                        {% endif %}
 
-                    {% if patient.gender %}
-                        <td class="align-middle">{{ patient.gender }}</td>
-                    {% else %}
-                        <td class="align-middle">Patient gender was not recorded!</td>
-                    {% endif %}
+                        {% if patient.state %}
+                            <td class="align-middle">{{ patient.state }}</td>
+                        {% else %}
+                            <td class="align-middle">*</td>
+                        {% endif %}
 
-                    {% if patient.state %}
-                        <td class="align-middle">{{ patient.state }}</td>
-                    {% else %}
-                        <td class="align-middle">Patient state was not recorded!</td>
-                    {% endif %}
+                        {% if patient.age %}
+                            <td class="align-middle">{{ patient.age }}</td>
+                        {% else %}
+                            <td class="align-middle">*</td>
+                        {% endif %}
 
-                    {% if patient.age %}
-                        <td class="align-middle">{{ patient.age }}</td>
-                    {% else %}
-                        <td class="align-middle">Patient age was not recorded!</td>
-                    {% endif %}
+                        <td class="align-middle">{{ patient.date_admitted.date() }}</td>
 
-                    <td class="align-middle">{{ patient.date_admitted.date() }}</td>
+                        <td class="align-middle"><a class='btn btn-primary' href='/see_patients/edit/{{ patient.id }}'>Edit</a></td>
 
-                    <td class="align-middle"><a class='btn btn-primary' href='/see_patients/edit/{{ patient.id }}'>Edit</a></td>
-
-                    <td class="align-middle"><a class='btn btn-danger' href='/see_patients/delete/{{ patient.id }}'>Delete</a></td>
-                    
-                </tr>
+                        <td class="align-middle"><a class='btn btn-danger' href='/see_patients/delete/{{ patient.id }}'>Delete</a></td>
+                        
+                    </tr>
 
                 {% endfor %}
             </tbody>
