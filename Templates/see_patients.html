@@ -28,6 +28,8 @@
                 <th scope="col">Age</th>
                 <th scope="col">Date Admitted</th>
                 <th scope="col">Patient Discharge Date</th>
+                <th scope="col">Department</th>
+                <th scope="col">Doctor ID</th>
                 <th scope="col"></th>
             </tr>
             </thead>
@@ -71,7 +73,22 @@
 
                         {% if patient.date_admitted %}
                             <td class="align-middle">{{ patient.date_admitted.date() }}</td>
+                        {% else %}
+                            <td class="align-middle">-</td>
                         {% endif %}
+
+                        {% if patient.doctorID %}
+                            <td class="align-middle">{{ patient.doctorID }}</td>
+                        {% else %}
+                            <td class="align-middle">-</td>
+                        {% endif %}   
+
+                        {% if patient.department %}
+                            <td class="align-middle">{{ patient.department }}</td>
+                        {% else %}
+                            <td class="align-middle">-</td>
+                        {% endif %}
+                        
 
                         {% set dischargeTime1 = patient.date_admitted.strftime("%m-%d-%Y") %}
 
