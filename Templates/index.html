@@ -6,7 +6,6 @@
 
 <style>
 
-
   .jumbotron {
     background-image: url("static/actualbackground.jpg");
     background-size: cover;
@@ -25,6 +24,10 @@
     padding-left: 7%;
   }
 
+  body {
+    overflow-y:hidden;
+  }
+
 </style>  
 
 {% endblock %}
@@ -34,33 +37,16 @@
 <div class="jumbotron">
   <div class="container text_in_index">
     <h1 class="display-4">Simple. Easy. Fast.</h1>
-    <hr class="solid my-5">
-    <p class="lead">Defining the future of hospital management software</p>
     <br>
+    <p class="lead">Defining the future of hospital management software</p>
+    <hr class="solid my-5">
     <p class="lead">
       <a class="btn btn-primary btn-lg" href="/about_hospitalhero" role="button">Learn more</a>
     </p>
   </div>
 </div>
 
-<div class="container">
-  <div class="row">
-    <div class="col">
-      <div class="display-4">Our Mission</h2>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-6">
-      <div class="card" style="width: 18rem;">
-        <img class="/static/pie-chart.png">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, sed cum, temporibus in veritatis fuga culpa praesentium sequi, consectetur ratione architecto laboriosam ullam itaque aliquid at beatae molestiae repellendus atque.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+
 
 
 {% endblock %}

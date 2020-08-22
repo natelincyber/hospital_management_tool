@@ -1,14 +1,41 @@
 {% extends 'base.html' %}
 
-{% block title %} About This Website{% endblock %}
+{% block head %}
+
+<style>
+
+.imageContainer {
+    background-image: url("/static/about-us-background.jpg");
+}
+
+body{
+    overflow-x: hidden;
+}
+
+.thumbnail {
+    position: relative;
+}
+
+.caption {
+    position: absolute;
+    top: 45%;
+    left: 0;
+    width: 100%;
+}
+</style>
+
+{% endblock %}
+
+{% block title %} About Us{% endblock %}
 
 {% block body %}
 
-<div class="jumbotron">
-    <h1 class="display-4">About Us</h1>
-    <p class="lead">We do stuff here </p>
+<div class="container-fluid imageContainer" style="text-align: center;">
+    <br>
+    <h1 class="display-3" style="color: #666666">About Us</h1>
     <hr class="my-4">
-    <p>Yeah we do stuff here</p>
+    <img src="/static/Final_Logo_Large.png">
+    <br>
 </div>
 
 {% endblock %}
