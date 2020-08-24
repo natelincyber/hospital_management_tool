@@ -24,7 +24,6 @@
                 <th scope="col">Medical Identification</th>
                 <th scope="col">Patient</th>
                 <th scope="col">Gender</th>
-                <th scope="col">Illness</th>
                 <th scope="col">Age</th>
                 <th scope="col">Date Admitted</th>
                 <th scope="col">Patient Discharge Date</th>
@@ -37,7 +36,7 @@
                 {% for patient in see_patients %}
 
                     <tr>
-                        <th scope="row" class="align-middle">
+                        <th scope="row" class="align-middle" >
                             {% if patient.medID %}
                                 {{ patient.medID }}
                             {% else %}
@@ -57,14 +56,6 @@
                             <td class="align-middle">-</td>
                         {% endif %}
 
-                        {% if patient.state %}
-                            <td class="align-middle">{{ patient.state }}</td>
-                        {% else %}
-                            <td class="align-middle">-</td>
-                        {% endif %}
-
-                     
-
                         {% if patient.age %}
                             <td class="align-middle">{{ patient.age }}</td>
                         {% else %}
@@ -77,17 +68,15 @@
                             <td class="align-middle">-</td>
                         {% endif %}
 
-                        {% if patient.doctorID %}
-                            <td class="align-middle">{{ patient.doctorID }}</td>
+ 
+                        {% if patient.cureTime == 'mild' %}
+                            {% set cureDate = 14 %}
+                        {% elif patient.cureTime == 'severe' %}
+                            {% set cureDate = 30 %}
                         {% else %}
-                            <td class="align-middle">-</td>
-                        {% endif %}   
-
-                        {% if patient.department %}
-                            <td class="align-middle">{{ patient.department }}</td>
-                        {% else %}
-                            <td class="align-middle">-</td>
+                            {% set cureDate = cureTime|int %}
                         {% endif %}
+
                         
 
                         {% set dischargeTime1 = patient.date_admitted.strftime("%m-%d-%Y") %}
@@ -96,15 +85,15 @@
 
                         {% set year1 = dischargeTime1[6:] %}
 
-                        {% set month = month1 | int %}
+                        {% set month = month1|int %}
 
-                        {% set year = year1 | int %}
+                        {% set year = year1|int %}
 
                         {% set dischargeTime = dischargeTime1[3:5] %}
 
-                        {% set dischargeTimeNum = dischargeTime | int %}
+                        {% set dischargeTimeNum = dischargeTime|int %}
 
-                        {% set finalDay = dischargeTimeNum + patient.cureTime %}
+                        {% set finalDay = dischargeTimeNum + cureDate %}
 
                         {% if month == 1 %}
                             {% set numDays = 31 %}
@@ -241,11 +230,23 @@
                         {% endif %}
 
                         {% if patient.cureTime %}
-                            <td class="align-middle">{{ year}}-{{ month }}-{{finalDay}}</td>
+                            <td class="align-middle">{{ year}}-{{ month }}-    {{cureDate}}   {{dischargeTimeNum}}</td>
                         {% else %}
                             <td class="align-middle">-</td>
                         {% endif %}
-    
+
+                        {% if patient.department %}
+                            <td class="align-middle" style="padding:0 0px 0 0px;">{{ patient.department }}</td>
+                        {% else %}
+                            <td class="align-middle">-</td>
+                        {% endif %}
+
+                        {% if patient.doctorID %}
+                            <td class="align-middle">{{ patient.doctorID }}</td>
+                        {% else %}
+                            <td class="align-middle">-</td>
+                        {% endif %}
+
                         <td class="align-middle"><a class='btn btn-primary btn-sm' href='/see_patients/edit/{{ patient.id }}'><img src="/static/edit.png"></a><a class='btn btn-danger btn-sm' href='/see_patients/delete/{{ patient.id }}'><img src="/static/trash.png"></a></td>
                     </tr>
                 {% endfor %}
