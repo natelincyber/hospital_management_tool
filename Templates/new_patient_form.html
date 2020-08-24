@@ -15,35 +15,55 @@
 {% block title %}New Patient{% endblock %}
 
 {% block body %}
-    <div class="card border-primary text-white bg-secondary mb-3" style="max-width: 40rem; text-align: center;">
-        <h1 class="card-header">Add New Patient</h1>
+    <div class="card bg-light mb-3" style="max-width: 40rem; text-align: center;">
+        <h1 class="card-header text-white" style="background-color: #292b2c;">Add New Patient</h1>
         <div class="card-body">
             <form action='/see_patients' method='POST'>
-                <div class="row">
-                    <div class="col-6">
-                        <label for='firstName' class="lead"><b>First Name</b></label>
-                        <input
-                        class="form-control"
-                        type="text"
-                        name='firstName' 
-                        id='firstName'
-                        placeholder="Patient First Name"
-                        aria-label="Patient First Name"
-                        />
+                <div class="input-group row">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Full Name</span>
                     </div>
-                    <div class="col-6">
-                        <label for='lastName' class="lead"><b>Last Name</b></label>
-                        <input
-                        class="form-control"
-                        type="text"
-                        name='lastName' 
-                        id='lastName'
-                        placeholder="Patient Last Name"
-                        aria-label="Patient Last Name"
-                        />
+                    <input
+                    class="form-control"
+                    type="text"
+                    name="firstName"
+                    id="firstName"
+                    placeholder="Patient First Name"
+                    aria-label="Patient First Name"
+                    />
+                    <input
+                    class="form-control"
+                    type="text"
+                    name="lastName"
+                    id="lastName"
+                    placeholder="Patient Last Name"
+                    aria-label="Patient Last Name"
+                    />
+                </div>
+                <div class="form-group row">
+                    <label class="col-4">Predicted Recovery Time</label> 
+                    <div class="col-8">
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input name="radio" id="radio_0" type="radio" class="custom-control-input" value="rabbit"> 
+                            <label for="radio_0" class="custom-control-label">Mild</label>
+                        </div>
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input name="radio" id="radio_1" type="radio" class="custom-control-input" value="duck"> 
+                            <label for="radio_1" class="custom-control-label">Severe</label>
+                        </div>
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input name="radio" id="radio_2" type="radio" class="custom-control-input" value="fish"> 
+                            <label for="radio_2" class="custom-control-label">Other</label>
+                        </div>
                     </div>
                 </div>
-                <div class="row">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Medical Identification</span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="Enter your 8 digit medical id number" type="number" name="medID" id="medID" aria-label="Medical Identification Number">
+                </div>
+                <!--<div class="row">
                     <div class="col-6">
                         <label for='cureTime' class="lead"><b>Covid-19 Severity</b></label>
                         <input
@@ -54,22 +74,12 @@
                         placeholder="Mild, Severe, or the number of days until fully cured"
                         aria-label="Mild, Severe, or the number of days until fully cured"
                         />
-                    </div>
+                    </div>-->
+                <div class="form-group row">
                     <div class="col-6">
-                        <label for='medID' class="lead"><b>Medical ID</b></label>
-                        <input
-                        class="form-control"
-                        type="number"
-                        name="medID"
-                        id="medID"
-                        placeholder="Medical Identification Number"
-                        aria-label="Medical Identification Number"
-                        />
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-6">
-                        <label for='age' class="lead"><b>Age</b></label>
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Age</span>
+                        </div>
                         <input
                         class="form-control"
                         type="number"
@@ -80,15 +90,19 @@
                         />
                     </div>
                     <div class="col-6">
-                        <br>
-                        <br>
-                        <label for='gender' class="lead"><b>Gender:</b></label>
-                        <select  name='gender' id='gender'>
-                            <option value='None Selected'>None Selected</option>
-                            <option value='Male'>Male</option>
-                            <option value='Female'>Female</option>
-                            <option value='Other'>Other</option>
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Gender</span>
+                        </div>
+                        <select class="custom-select" name="gender" id="gender">
+                            <option selected>Prefer not to say</option>
+                            <option value="1">Male</option>
+                            <option value="2">Female</option>
+                            <option value="3">Other</option>
                         </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
                         <label for='field' class="lead"><b>Department</b></label>
                         <input
                             class="form-control"
@@ -99,6 +113,7 @@
                             aria-label="Admitted Department"
                         />
                     </div>
+                    <div class="col-6">
                         <label for='doctorID' class="lead"><b>Doctor ID</b></label>
                         <input
                             class="form-control"
@@ -111,7 +126,7 @@
                     </div>
                 </div>           
                 <br>
-                <input class="btn btn-primary" type="submit" value="Submit">
+                <button class="btn btn-outline-info rounded-pill my-4 mx-auto" type="submit" value="Submit">Submit</button>
             </div>    
             </form>
         </div>
