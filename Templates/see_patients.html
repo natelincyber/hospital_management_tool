@@ -24,7 +24,6 @@
                 <th scope="col">Medical Identification</th>
                 <th scope="col">Patient</th>
                 <th scope="col">Gender</th>
-                <th scope="col">Illness</th>
                 <th scope="col">Age</th>
                 <th scope="col">Date Admitted</th>
                 <th scope="col">Patient Discharge Date</th>
@@ -57,14 +56,6 @@
                             <td class="align-middle">-</td>
                         {% endif %}
 
-                        {% if patient.state %}
-                            <td class="align-middle">{{ patient.state }}</td>
-                        {% else %}
-                            <td class="align-middle">-</td>
-                        {% endif %}
-
-                     
-
                         {% if patient.age %}
                             <td class="align-middle">{{ patient.age }}</td>
                         {% else %}
@@ -78,7 +69,13 @@
                         {% endif %}
 
  
-
+                        {% if patient.cureTime == 'mild' %}
+                            {% set cureDate = 14 %}
+                        {% elif patient.cureTime == 'severe' %}
+                            {% set cureDate = 30 %}
+                        {% else %}
+                            {% set cureDate = cureTime|int %}
+                        {% endif %}
 
                         
 
@@ -88,15 +85,15 @@
 
                         {% set year1 = dischargeTime1[6:] %}
 
-                        {% set month = month1 | int %}
+                        {% set month = month1|int %}
 
-                        {% set year = year1 | int %}
+                        {% set year = year1|int %}
 
                         {% set dischargeTime = dischargeTime1[3:5] %}
 
-                        {% set dischargeTimeNum = dischargeTime | int %}
+                        {% set dischargeTimeNum = dischargeTime|int %}
 
-                        {% set finalDay = dischargeTimeNum + patient.cureTime %}
+                        {% set finalDay = dischargeTimeNum + cureDate %}
 
                         {% if month == 1 %}
                             {% set numDays = 31 %}
@@ -233,7 +230,7 @@
                         {% endif %}
 
                         {% if patient.cureTime %}
-                            <td class="align-middle">{{ year}}-{{ month }}-{{finalDay}}</td>
+                            <td class="align-middle">{{ year}}-{{ month }}-    {{cureDate}}   {{dischargeTimeNum}}</td>
                         {% else %}
                             <td class="align-middle">-</td>
                         {% endif %}
