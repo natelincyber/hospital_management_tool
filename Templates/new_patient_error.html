@@ -18,7 +18,11 @@
     <div class="card bg-light mb-3" style="max-width: 40rem; text-align: center;">
         <h1 class="card-header text-white" style="background-color: #292b2c;">Add New Patient</h1>
         <div class="card-body">
+<<<<<<< HEAD
             <form action='/see_patients' method='POST'>
+=======
+            <form action='/new_patient_error/{{ patient.id }}' method='POST'>
+>>>>>>> b1b6fc72ffa417ba90188da726439685c568385c
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text">Full Name</span>
@@ -30,7 +34,11 @@
                     name="firstName"
                     id="firstName"
                     value='{{ patient.firstName }}'
+<<<<<<< HEAD
                     aria-label="{{ patient.firstName }}"
+=======
+                    aria-label="First Name"
+>>>>>>> b1b6fc72ffa417ba90188da726439685c568385c
                     />
                     <label for='lastName' class="lead"></label>
                     <input
@@ -126,7 +134,11 @@
                     <label for='cureTime' class="lead"></label>
                     <input type="text" class="form-control" placeholder="How many days will the patient stay?" type="number" name="cureTime" id="cureTime" aria-label="How many days will the patient stay?">
                 </div>
+<<<<<<< HEAD
                 <button class="btn btn-outline-info rounded-pill my-4 mx-auto" type="submit" value="Submit">Submit</button>
+=======
+                <button class="btn btn-outline-info rounded-pill my-4 mx-auto" type="submit" value="Save">Submit</button>
+>>>>>>> b1b6fc72ffa417ba90188da726439685c568385c
             </div>    
             </form>
         </div>
