@@ -40,29 +40,9 @@
                     aria-label="Patient Last Name"
                     />
                 </div>
-                <div class="form-group row">
-                    <label class="col-4">Predicted Recovery Time</label> 
-                    <div class="col-8">
-                        <div class="custom-control custom-radio custom-control-inline">
-                            <input name="radio" id="radio_0" type="radio" class="custom-control-input" value="rabbit"> 
-                            <label for="radio_0" class="custom-control-label">Mild</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline">
-                            <input name="radio" id="radio_1" type="radio" class="custom-control-input" value="duck"> 
-                            <label for="radio_1" class="custom-control-label">Severe</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline">
-                            <input name="radio" id="radio_2" type="radio" class="custom-control-input" value="fish"> 
-                            <label for="radio_2" class="custom-control-label">Other</label>
-                        </div>
-                    </div>
-                </div>
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text">Medical Identification</span>
-                    </div>
-                    <input type="text" class="form-control" placeholder="Enter your 8 digit medical id number" type="number" name="medID" id="medID" aria-label="Medical Identification Number">
-                </div>
+
+                <p>
+                
                 <!--<div class="row">
                     <div class="col-6">
                         <label for='cureTime' class="lead"><b>Estimated Recovery Time</b></label>
@@ -75,6 +55,27 @@
                         aria-label="Enter the number of days until fully cured"
                         />
                     </div>-->
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Department</span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="Admitted Department" type="text" name="field" id="field" aria-label="Admitted Department">
+                </div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Doctor Identification</span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="Doctor Identification Number" type="text" name="doctorID" id="doctorID" aria-label="Doctor Identification Number">
+                </div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Patient Medical Identification</span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="Enter your patient's 8 digit medical id number" type="number" name="medID" id="medID" aria-label="Medical Identification Number">
+                </div>
+
                 <div class="form-group row">
                     <div class="col-6">
                         <div class="input-group-prepend">
@@ -100,46 +101,24 @@
                             <option value="3">Other</option>
                         </select>
                     </div>
+                </div>  
+                
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">COVID-19?</span>
+                    </div>
+                    <select class="custom-select" name="gender" id="gender">
+                        <option selected>No</option>
+                        <option value="1">Mild (7-day recovery period)</option>
+                        <option value="2">Severe (30-day recovery period)</option>
+                    </select>
                 </div>
-                <div class="row">
-                    <div class="col-6">
-                        <label for='field' class="lead"><b>Department</b></label>
-                        <input
-                            class="form-control"
-                            type="text"
-                            name='field' 
-                            id='field'
-                            aria-label="Admitted Department"
-                            placeholder="Admitted Department"
-                        />
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Custom Predicted Recovery Time</span>
                     </div>
-                    <div class="col-6">
-                        <label for='doctorID' class="lead"><b>Doctor ID</b></label>
-                        <input
-                            class="form-control"
-                            type="number"
-                            name='doctorID' 
-                            id='doctorID'
-                            value='Doctor ID'
-                            aria-label="Doctor ID"
-                            placeholder="Doctor Identification"
-                        />
-                        <br>                      
-                        <label for='cureTime' class="lead"><b>Time Until Full Recovery</b></label>
-                        <input
-                            class="form-control"
-                            type="number"
-                            name='cureTime' 
-                            id='cureTime'
-                            value='Doctor ID'
-                            aria-label="Days Until Full Recovery"
-                            placeholder="Days Until Full Recovery"
-                        />
-                    </div>
-                </div>           
-                <br>
-                <br>
-                <br>
+                    <input type="text" class="form-control" placeholder="How many days will the patient stay?" type="number" name="cureTime" id="cureTime" aria-label="How many days will the patient stay?">
+                </div>
                 <button class="btn btn-outline-info rounded-pill my-4 mx-auto" type="submit" value="Submit">Submit</button>
             </div>    
             </form>
