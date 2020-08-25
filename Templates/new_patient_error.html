@@ -16,7 +16,7 @@
 
 {% block body %}
     <div class="card bg-light mb-3" style="max-width: 40rem; text-align: center;">
-        <h1 class="card-header text-white" style="background-color: #292b2c;">Add New Patient</h1>
+        <h1 class="card-header text-white" style="background-color: #292b2c;">Something Went Wrong...</h1>
         <div class="card-body">
             <form action='/new_patient_error/{{ patient.id }}' method='POST'>
                 <div class="input-group">
@@ -89,17 +89,30 @@
                         <label for='gender' class="lead"></label>
                         <select class="custom-select" name="gender" id="gender">
                             {% if patient.gender %}
-                                {% if patient.gender == '0' %}
-                                    <option selected>Prefer not to say</option>
-                                {% elif patient.gender == '1' %}
-                                    <option selected>Male</option>
-                                {% elif patient.gender == '2' %}
-                                    <option selected>Female</option>
-                                {% elif patient.gender == '3' %}
-                                    <option selected>Other</option>
+
+                                {% if patient.gender|int == 0 %}
+                                    <option value="0" selected>Prefer not to say</option>
+                                    <option value="1">Male</option>
+                                    <option value="2">Female</option>
+                                    <option value="3">Other</option>
+                                {% elif patient.gender|int == 1 %}
+                                    <option value="1" selected>Male</option>
+                                    <option value="0">Prefer not to say</option>
+                                    <option value="2">Female</option>
+                                    <option value="3">Other</option>
+                                {% elif patient.gender|int == 2 %}
+                                    <option value="2" selected>Female</option>
+                                    <option value="0">Prefer not to say</option>
+                                    <option value="1">Male</option>
+                                    <option value="3">Other</option>
+                                {% elif patient.gender|int == 3 %}
+                                    <option value='3'   selected>Other</option>
+                                    <option value="0">Prefer not to say</option>
+                                    <option value="1">Male</option>
+                                    <option value="2">Female</option>
                                 {% endif %}
                             {% else %}
-                                <option value="0" selected>Prefer not to say</option>
+                                <option value="0">Prefer not to say</option>
                                 <option value="1">Male</option>
                                 <option value="2">Female</option>
                                 <option value="3">Other</option>

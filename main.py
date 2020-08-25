@@ -103,7 +103,7 @@ def edit(id):
 def about():
     return render_template('about_hospitalhero.html')
 
-@app.route('/new_patient_error/<int:id>')
+@app.route('/new_patient_error/<int:id>', methods=['GET', 'POST'])
 def new_patient_error(id):
     patient = PatientInfo.query.get_or_404(id)
     if request.method == 'POST':

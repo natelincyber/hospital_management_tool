@@ -84,8 +84,6 @@
                             {% set nullVal = '-' %}
                         {% endif %}
 
-                        <td class="align-middle">{{ patient.cureTime }}</td>
-
                         {% set dischargeTime1 = patient.date_admitted.strftime("%m-%d-%Y") %}
 
                         {% set month1 = dischargeTime1[1:2] %}
