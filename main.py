@@ -16,9 +16,10 @@ class PatientInfo(db.Model):
     firstName = db.Column(db.String(20), nullable=False)
     lastName = db.Column(db.String(20), nullable=False)
     age = db.Column(db.Integer, nullable=False)
+    state = db.Column(db.String(20), default=False)
     gender = db.Column(db.String(20), nullable=False)
     medID = db.Column(db.Integer, nullable=False)
-    cureTime = db.Column(db.String(20), nullable=False)
+    cureTime = db.Column(db.Integer, nullable=False)
     doctorID = db.Column(db.Integer, nullable=False)
     field = db.Column(db.String(25), nullable=False)
     date_admitted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
@@ -36,12 +37,13 @@ def see_patients():
         patient_first = request.form['firstName']
         patient_last = request.form['lastName']
         patient_age = request.form['age']
+        patient_state = request.form['state']
         patient_gender = request.form['gender']
         patient_medID = request.form['medID']
         patient_cureTime = request.form['cureTime']
         patient_doctorID = request.form['doctorID']
         patient_field = request.form['field']
-        new_patient = PatientInfo(firstName=patient_first, lastName=patient_last, age=patient_age, gender=patient_gender, medID=patient_medID, cureTime=patient_cureTime, doctorID=patient_doctorID, field=patient_field)
+        new_patient = PatientInfo(firstName=patient_first, lastName=patient_last, age=patient_age, state=patient_state, gender=patient_gender, medID=patient_medID, cureTime=patient_cureTime, doctorID=patient_doctorID, field=patient_field)
         
         db.session.add(new_patient)
         db.session.commit()
@@ -57,12 +59,13 @@ def addPatientForm():
         patient.firstName = request.form['firstName']
         patient.lastName = request.form['lastName']
         patient.age = request.form['age']
+        patient.state = request.form['state']
         patient.gender = request.form['gender']
         patient.medID = request.form['medID']
         patient.cureTime = request.form['cureTime']
         patient.doctorID = request.form['doctorID']
         patient.field = request.form['field']
-        new_patient = PatientInfo(firstName=patient_first, lastName=patient_last, age=patient_age, gender=patient_gender, medID=patient_medID, cureTime=patient_cureTime, doctorID=patient_doctorID, field=patient_field)
+        new_patient = PatientInfo(firstName=patient_first, lastName=patient_last, age=patient_age, state=patient_state, gender=patient_gender, medID=patient_medID, cureTime=patient_cureTime, doctorID=patient_doctorID, field=patient_field)
         db.session.add(new_patient)
         db.session.commit()
         return redirect('/see_patients') 
@@ -84,6 +87,7 @@ def edit(id):
         patient.firstName = request.form['firstName']
         patient.LastName = request.form['lastName']
         patient.age = request.form['age']
+        patient.state = request.form['state']
         patient.gender = request.form['gender']
         patient.medID = request.form['medID'] 
         patient.cureTime = request.form['cureTime']
@@ -98,7 +102,6 @@ def edit(id):
 @app.route('/about_hospitalhero')
 def about():
     return render_template('about_hospitalhero.html')
-
 
 if __name__ == '__main__': 
     app.run(debug=True)
