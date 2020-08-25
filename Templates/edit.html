@@ -12,120 +12,135 @@
 
 {% endblock %}
 
-{% block title %}HELLO?{% endblock %}
+{% block title %}Add Patient Form{% endblock %}
 
 {% block body %}
-    <div class="card border-primary text-white bg-secondary mb-3" style="max-width: 40rem; text-align: center;">
-        <h1 class="card-header">Add New Patient</h1>
+    <div class="card bg-light mb-3" style="max-width: 40rem; text-align: center;">
+        <h1 class="card-header text-white" style="background-color: #292b2c;">Something Went Wrong...</h1>
         <div class="card-body">
             <form action='/see_patients/edit/{{ patient.id }}' method='POST'>
-                <div class="row">
-                    <div class="col-6">
-                        <label for='firstName' class="lead"><b>First Name</b></label>
-                        <input
-                        class="form-control"
-                        type="text"
-                        name='firstName' 
-                        id='firstName'
-                        value='{{patient.firstName}}'
-                        aria-label="First Name"
-                        />
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Full Name</span>
                     </div>
-                    <div class="col-6">
-                        <label for='lastName' class="lead"><b>Last Name</b></label>
-                        <input
-                        class="form-control"
-                        type="text"
-                        name='lastName' 
-                        id='lastName'
-                        value='{{patient.lastName}}'
-                        aria-label="Last Name"
-                        />
-                    </div>
+                    <label for='firstName' class="lead"></label>
+                    <input
+                    class="form-control"
+                    type="text"
+                    name="firstName"
+                    id="firstName"
+                    value='{{ patient.firstName }}'
+                    aria-label="First Name"
+                    />
+                    <label for='lastName' class="lead"></label>
+                    <input
+                    class="form-control"
+                    type="text"
+                    name="lastName"
+                    id="lastName"
+                    value='{{ patient.lastName }}'
+                    aria-label="Patient Last Name"
+                    />
                 </div>
-                <div class="row">
-                    <div class="col-6">
-                        <label for='state' class="lead"><b>Type of Illness</b></label>
-                        <input
-                        class="form-control"
-                        type="text"
-                        name="state"
-                        id="state"
-                        value='{{patient.state}}'
-                        aria-label="Illness"
-                        />
+                <p>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Department</span>
                     </div>
-                    <div class="col-6">
-                        <label for='medID' class="lead"><b>Medical ID</b></label>
-                        <input
-                        class="form-control"
-                        type="number"
-                        name="medID"
-                        id="medID"
-                        value='{{patient.medID}}'
-                        aria-label="Medical Identification Number"
-                        />
-                    </div>
+                    <label for='field' class="lead"></label>
+                    <input type="text" class="form-control" value='{{ patient.field }}' type="text" name="field" id="field" aria-label="Admitted Department">
                 </div>
-                <div class="row">
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Doctor Identification</span>
+                    </div>
+                    <label for='doctorID' class="lead"></label>
+                    <input type="text" class="form-control" value='{{ patient.doctorID }}' type="text" name="doctorID" id="doctorID" aria-label="Doctor Identification Number">
+                </div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Patient Medical Identification</span>
+                    </div>
+                    <label for='medID' class="lead"></label>
+                    <input type="text" class="form-control" value='{{ patient.medID }}' type="number" name="medID" id="medID" aria-label="Medical Identification Number">
+                </div>
+
+                <div class="form-group row">
                     <div class="col-6">
-                        <label for='age' class="lead"><b>Age</b></label>
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Age</span>
+                        </div>
+                        <label for='age' class="lead"></label>
                         <input
                         class="form-control"
                         type="number"
                         name='age' 
                         id='age'
-                        value='{{patient.age}}'
-                        aria-label="Age"
+                        value='{{ patient.age }}'
+                        aria-label="Patient Age"
                         />
                     </div>
                     <div class="col-6">
-                        <br>
-                        <br>
-                        <label for='gender' class="lead"><b>Gender:</b></label>
-                        <select  name='gender' id='gender' value='{{patient.gender}}'>
-                            <option value='None Selected'>None Selected</option>
-                            <option value='Male'>Male</option>
-                            <option value='Female'>Female</option>
-                            <option value='Other'>Other</option>
-                        </select>
-                        <label for='field' class="lead"><b>Department</b></label>
-                        <input
-                            class="form-control"
-                            type="text"
-                            name='field' 
-                            id='field'
-                            value='Admitted Department'
-                            aria-label="Admitted Department"
-                        />
-                    </div>
-                    <div class="row">
-                        <div class="col-6">
-                            <label for='cureTime' class="lead"><b>Days Until Discharge</b></label>
-                            <input
-                                class="form-control"
-                                type="number"
-                                name='cureTime' 
-                                id='cureTime'
-                                value='{{patient.cureTime}}'
-                                aria-label="Days Until Discharge"
-                            />
-                            <label for='doctorID' class="lead"><b>Doctor ID</b></label>
-                            <input
-                                class="form-control"
-                                type="number"
-                                name='doctorID' 
-                                id='doctorID'
-                                value='Doctor ID'
-                                aria-label="Doctor ID"
-                            />
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Gender</span>
                         </div>
+                        <label for='gender' class="lead"></label>
+                        <select class="custom-select" name="gender" id="gender">
+                            {% if patient.gender %}
+
+                                {% if patient.gender|int == 0 %}
+                                    <option value="0" selected>Prefer not to say</option>
+                                    <option value="1">Male</option>
+                                    <option value="2">Female</option>
+                                    <option value="3">Other</option>
+                                {% elif patient.gender|int == 1 %}
+                                    <option value="1" selected>Male</option>
+                                    <option value="0">Prefer not to say</option>
+                                    <option value="2">Female</option>
+                                    <option value="3">Other</option>
+                                {% elif patient.gender|int == 2 %}
+                                    <option value="2" selected>Female</option>
+                                    <option value="0">Prefer not to say</option>
+                                    <option value="1">Male</option>
+                                    <option value="3">Other</option>
+                                {% elif patient.gender|int == 3 %}
+                                    <option value='3'   selected>Other</option>
+                                    <option value="0">Prefer not to say</option>
+                                    <option value="1">Male</option>
+                                    <option value="2">Female</option>
+                                {% endif %}
+                            {% else %}
+                                <option value="0">Prefer not to say</option>
+                                <option value="1">Male</option>
+                                <option value="2">Female</option>
+                                <option value="3">Other</option>
+                            {% endif %}
+                        </select>
                     </div>
-                </div>           
-                <br>
-            
-            </div>
-            <input class="btn btn-primary" type="submit" value='Save'> 
+                </div>  
+                
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">COVID-19?</span>
+                    </div>
+                    <label for='state' class="lead"></label>
+                    <select class="custom-select" name="state" id="state">
+                        <option value="1" selected>No</option>
+                        <option value="2">Mild (7-day recovery period)</option>
+                        <option value="3">Severe (30-day recovery period)</option>
+                    </select>
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Custom Predicted Recovery Time</span>
+                    </div>
+                    <label for='cureTime' class="lead"></label>
+                    <input type="text" class="form-control" placeholder="How many days will the patient stay?" type="number" name="cureTime" id="cureTime" aria-label="How many days will the patient stay?">
+                </div>
+                <button class="btn btn-outline-info rounded-pill my-4 mx-auto" type="submit" value="Save">Submit</button>
+            </div>    
             </form>
         </div>
     </div>

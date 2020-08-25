@@ -70,7 +70,7 @@
 
 
                         {% if patient.state == '2' %}
-                            {% set cureDate = 14 %}
+                            {% set cureDate = 7 %}
                         {% elif patient.state == '3' %}
                             {% set cureDate = 30 %}
                         {% elif patient.state == '1' %}
@@ -79,7 +79,10 @@
                             {% else %}
                                 {% set cureDate = patient.cureTime|int %}
                             {% endif %}
-                            {% set cureDate = patient.cureTime|int %}
+                        {% elif patient.state == '2' or '3' %}
+                            {% if patient.cureTime|int == 123 %}
+                                <meta http-equiv="refresh" content="0; /new_patient_error/{{ patient.id }}" />
+                            {% endif %}
                         {% else %}
                             {% set nullVal = '-' %}
                         {% endif %}
@@ -236,7 +239,7 @@
                                     {% set finalDay = finalDay + overflow %}
                                 {% endif %}
                             {% endif %}
-                            <td class="align-middle">{{ year}}-{{ month }}-{{cureDate}}</td>
+                            <td class="align-middle">{{ year}}-{{ month }}-{{finalDay}}</td>
                         {% endif %}
 
                             
