@@ -68,18 +68,23 @@
                             <td class="align-middle">-</td>
                         {% endif %}
 
- 
-                        {% if patient.cureTime == 'mild' %}
+
+                        {% if patient.state == '2' %}
                             {% set cureDate = 14 %}
-                        {% elif patient.cureTime == 'severe' %}
+                        {% elif patient.state == '3' %}
                             {% set cureDate = 30 %}
-                        {% elif patient.cureTime is number %}
-                            {% set cureDate = cureTime|int %}
+                        {% elif patient.state == '1' %}
+                            {% if patient.cureTime == '' %}
+                                <meta http-equiv="refresh" content="0; /new_patient_error/{{ patient.id }}" />
+                            {% else %}
+                                {% set cureDate = patient.cureTime|int %}
+                            {% endif %}
+                            {% set cureDate = patient.cureTime|int %}
                         {% else %}
                             {% set nullVal = '-' %}
                         {% endif %}
 
-                        
+                        <td class="align-middle">{{ patient.cureTime }}</td>
 
                         {% set dischargeTime1 = patient.date_admitted.strftime("%m-%d-%Y") %}
 
@@ -237,8 +242,8 @@
                         {% endif %}
 
                             
-                        {% if patient.department %}
-                            <td class="align-middle" style="padding:0 0px 0 0px;">{{ patient.department }}</td>
+                        {% if patient.field %}
+                            <td class="align-middle" style="padding:0 0px 0 0px;">{{ patient.field }}</td>
                         {% else %}
                             <td class="align-middle">-</td>
                         {% endif %}

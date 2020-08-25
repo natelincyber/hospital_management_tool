@@ -103,5 +103,24 @@ def edit(id):
 def about():
     return render_template('about_hospitalhero.html')
 
+@app.route('/new_patient_error/<int:id>')
+def new_patient_error(id):
+    patient = PatientInfo.query.get_or_404(id)
+    if request.method == 'POST':
+        patient = PatientInfo.query.get_or_404(id)
+        patient.firstName = request.form['firstName']
+        patient.LastName = request.form['lastName']
+        patient.age = request.form['age']
+        patient.state = request.form['state']
+        patient.gender = request.form['gender']
+        patient.medID = request.form['medID'] 
+        patient.cureTime = request.form['cureTime']
+        patient.doctorID = request.form['doctorID']
+        patient.field = request.form['field']      
+        db.session.commit()
+        return redirect('/see_patients') 
+    else:
+        return render_template('new_patient_error.html', patient=patient) 
+
 if __name__ == '__main__': 
     app.run(debug=True)

@@ -12,7 +12,7 @@
 
 {% endblock %}
 
-{% block title %}New Patient{% endblock %}
+{% block title %}Add Patient Form{% endblock %}
 
 {% block body %}
     <div class="card bg-light mb-3" style="max-width: 40rem; text-align: center;">
@@ -29,8 +29,8 @@
                     type="text"
                     name="firstName"
                     id="firstName"
-                    placeholder="Patient First Name"
-                    aria-label="Patient First Name"
+                    value='{{ patient.firstName }}'
+                    aria-label="{{ patient.firstName }}"
                     />
                     <label for='lastName' class="lead"></label>
                     <input
@@ -38,7 +38,7 @@
                     type="text"
                     name="lastName"
                     id="lastName"
-                    placeholder="Patient Last Name"
+                    value='{{ patient.lastName }}'
                     aria-label="Patient Last Name"
                     />
                 </div>
@@ -48,7 +48,7 @@
                         <span class="input-group-text">Department</span>
                     </div>
                     <label for='field' class="lead"></label>
-                    <input type="text" class="form-control" placeholder="Admitted Department" type="text" name="field" id="field" aria-label="Admitted Department">
+                    <input type="text" class="form-control" value='{{ patient.field }}' type="text" name="field" id="field" aria-label="Admitted Department">
                 </div>
 
                 <div class="input-group mb-3">
@@ -56,7 +56,7 @@
                         <span class="input-group-text">Doctor Identification</span>
                     </div>
                     <label for='doctorID' class="lead"></label>
-                    <input type="text" class="form-control" placeholder="Doctor Identification Number" type="text" name="doctorID" id="doctorID" aria-label="Doctor Identification Number">
+                    <input type="text" class="form-control" value='{{ patient.doctorID }}' type="text" name="doctorID" id="doctorID" aria-label="Doctor Identification Number">
                 </div>
 
                 <div class="input-group mb-3">
@@ -64,7 +64,7 @@
                         <span class="input-group-text">Patient Medical Identification</span>
                     </div>
                     <label for='medID' class="lead"></label>
-                    <input type="text" class="form-control" placeholder="Enter your patient's 8 digit medical id number" type="number" name="medID" id="medID" aria-label="Medical Identification Number">
+                    <input type="text" class="form-control" value='{{ patient.medID }}' type="number" name="medID" id="medID" aria-label="Medical Identification Number">
                 </div>
 
                 <div class="form-group row">
@@ -78,7 +78,7 @@
                         type="number"
                         name='age' 
                         id='age'
-                        placeholder="Patient Age"
+                        value='{{ patient.age }}'
                         aria-label="Patient Age"
                         />
                     </div>
@@ -88,10 +88,22 @@
                         </div>
                         <label for='gender' class="lead"></label>
                         <select class="custom-select" name="gender" id="gender">
-                            <option selected>Prefer not to say</option>
-                            <option value="1">Male</option>
-                            <option value="2">Female</option>
-                            <option value="3">Other</option>
+                            {% if patient.gender %}
+                                {% if patient.gender == '0' %}
+                                    <option selected>Prefer not to say</option>
+                                {% elif patient.gender == '1' %}
+                                    <option selected>Male</option>
+                                {% elif patient.gender == '2' %}
+                                    <option selected>Female</option>
+                                {% elif patient.gender == '3' %}
+                                    <option selected>Other</option>
+                                {% endif %}
+                            {% else %}
+                                <option value="0" selected>Prefer not to say</option>
+                                <option value="1">Male</option>
+                                <option value="2">Female</option>
+                                <option value="3">Other</option>
+                            {% endif %}
                         </select>
                     </div>
                 </div>  
