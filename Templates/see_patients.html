@@ -70,7 +70,11 @@
 
 
                         {% if patient.state == '2' %}
-                            {% set cureDate = 7 %}
+                            {% if patient.cureTime|int > 0 %}
+                                <meta http-equiv="refresh" content="0; /new_patient_error/{{ patient.id }}" />
+                            {% else %}
+                                {% set cureDate = 7 %}
+                            {% endif %}
                         {% elif patient.state == '3' %}
                             {% set cureDate = 30 %}
                         {% elif patient.state == '1' %}
@@ -78,10 +82,6 @@
                                 <meta http-equiv="refresh" content="0; /new_patient_error/{{ patient.id }}" />
                             {% else %}
                                 {% set cureDate = patient.cureTime|int %}
-                            {% endif %}
-                        {% elif patient.state == '2' or '3' %}
-                            {% if patient.cureTime|int == 123 %}
-                                <meta http-equiv="refresh" content="0; /new_patient_error/{{ patient.id }}" />
                             {% endif %}
                         {% else %}
                             {% set nullVal = '-' %}
@@ -104,7 +104,7 @@
                         {% if nullVal %}
                             <td class="align-middle">-</td>
                         {% else %}
-                            {% set finalDay = dischargeTimeNum + cureDate %}'
+                            {% set finalDay = dischargeTimeNum + patient.cureTime|int %}'
             
                             {% if month == 1 %}
                                 {% set numDays = 31 %}
