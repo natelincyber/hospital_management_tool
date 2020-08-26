@@ -11,7 +11,9 @@
 
 {% block body %}
     {% if see_patients|length == 0 %}
+    <div class="jumbotron">
         <p style="white-space:pre-wrap">You have no patients. Go to the add patient menu to add a new patient!</p>
+    </div>
     {% else %}
         <br>    
         <div>
@@ -68,6 +70,16 @@
                             <td class="align-middle">-</td>
                         {% endif %}
 
+                        {% set checkID = patient.medID|string %}
+                        
+                        {% if checkID|length > 8 %}
+                            <meta http-equiv="refresh" content="0; /new_patient_error/{{ patient.id }}" />
+                        {% endif %}
+
+                        {% if patient.age > 130 %}
+                            <meta http-equiv="refresh" content="0; /new_patient_error/{{ patient.id }}" />
+                        {% endif %}
+
 
                         {% if patient.state == '2' %}
                             {% if patient.cureTime|int > 0 %}
@@ -76,8 +88,12 @@
                                 {% set cureDate = 7 %}
                             {% endif %}
                         {% elif patient.state == '3' %}
-                            {% set cureDate = 30 %}
-                        {% elif patient.state == '1' %}
+                            {% if patient.cureTime|int > 0 %}
+                                <meta http-equiv="refresh" content="0; /new_patient_error/{{ patient.id }}" />
+                            {% else %}
+                                {% set cureDate = 30 %}
+                            {% endif %}
+                        {% elif patient.state == '1' or patient.state == '4' %}
                             {% if patient.cureTime == '' %}
                                 <meta http-equiv="refresh" content="0; /new_patient_error/{{ patient.id }}" />
                             {% else %}
@@ -233,10 +249,16 @@
                                 {% set numDays = 31 %}
                                 {% if finalDay > numDays %}
                                     {% set overflow = finalDay - numDays %}
-                                    {% set month = 1 %}
-                                    {% set year = year + 1 %}
-                                    {% set finalDay = 0 %}
-                                    {% set finalDay = finalDay + overflow %}
+                                    {% if overflow > numDays %}
+                                        {% set month = 2 %}
+                                        {% set finalDay = 0 %}
+                                        {% set finalDay =  overflow - numDays%}
+                                    {% else %}
+                                        {% set month = 1 %}
+                                        {% set year = year + 1 %}
+                                        {% set finalDay = 0 %}
+                                        {% set finalDay = finalDay + overflow %}
+                                    {% endif %}
                                 {% endif %}
                             {% endif %}
                             <td class="align-middle">{{ year}}-{{ month }}-{{finalDay}}</td>
@@ -255,7 +277,7 @@
                             <td class="align-middle">-</td>
                         {% endif %}
 
-                        <td class="align-middle"><a class='btn btn-primary btn-sm' href='/see_patients/edit/{{ patient.id }}'><img src="/static/edit.png"></a><a class='btn btn-danger btn-sm' href='/see_patients/delete/{{ patient.id }}'><img src="/static/trash.png"></a></td>
+                        <td class="align-middle"><a class='btn' href='/see_patients/edit/{{ patient.id }}'><img src="/static/edit.png"></a><a class='btn' href='/see_patients/delete/{{ patient.id }}'><img src="/static/trash.png"></a></td>
                     </tr>
                 {% endfor %}
             </tbody>
