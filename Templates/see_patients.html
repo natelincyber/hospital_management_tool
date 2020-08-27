@@ -21,7 +21,7 @@
         </div>
         <hr>
         <table class="table table-striped" style="text-align: center;">
-            <thead class="thead-dark">
+            <thead class="thead-dark">  
             <tr>
                 <th scope="col">Medical Identification</th>
                 <th scope="col">Patient</th>
@@ -75,8 +75,10 @@
                         {% if checkID|length > 8 %}
                             <meta http-equiv="refresh" content="0; /new_patient_error/{{ patient.id }}" />
                         {% endif %}
-
-                        {% if patient.age > 130 %}
+                        
+                        {% if patient.age is string %}
+                            <meta http-equiv="refresh" content="0; /new_patient_error/{{ patient.id }}" />
+                        {% elif patient.age > 130 %}
                             <meta http-equiv="refresh" content="0; /new_patient_error/{{ patient.id }}" />
                         {% endif %}
 
@@ -93,7 +95,7 @@
                             {% else %}
                                 {% set cureDate = 30 %}
                             {% endif %}
-                        {% elif patient.state == '1' or patient.state == '4' %}
+                        {% elif patient.state == '1'%}
                             {% if patient.cureTime == '' %}
                                 <meta http-equiv="refresh" content="0; /new_patient_error/{{ patient.id }}" />
                             {% else %}
@@ -102,7 +104,8 @@
                         {% else %}
                             {% set nullVal = '-' %}
                         {% endif %}
-
+                        
+                        
                         {% set dischargeTime1 = patient.date_admitted.strftime("%m-%d-%Y") %}
 
                         {% set month1 = dischargeTime1[1:2] %}
@@ -120,7 +123,7 @@
                         {% if nullVal %}
                             <td class="align-middle">-</td>
                         {% else %}
-                            {% set finalDay = dischargeTimeNum + patient.cureTime|int %}'
+                            {% set finalDay = dischargeTimeNum + patient.cureTime|int %}
             
                             {% if month == 1 %}
                                 {% set numDays = 31 %}
@@ -261,7 +264,7 @@
                                     {% endif %}
                                 {% endif %}
                             {% endif %}
-                            <td class="align-middle">{{ year}}-{{ month }}-{{finalDay}}</td>
+                            <td class="align-middle">{{ year }}-{{ month }}-{{finalDay}}</td>
                         {% endif %}
 
                             

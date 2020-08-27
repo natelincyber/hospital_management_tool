@@ -131,31 +131,22 @@
                         {% if patient.state %}
 
                             {% if patient.state|int == 1 %}
-                                <option value="1" selected>No</option>
+                                <option value="1" selected>No (Use the Next Line To give Custom Input)</option>
                                 <option value="2">Mild (7-day recovery period)</option>
                                 <option value="3">Severe (30-day recovery period)</option>
-                                <option value="4">Custom (Use the next line to have a custom input)</option>
                             {% elif patient.state|int == 2 %}
-                                <option value="1">No</option>
+                                <option value="1">No (Use the Next Line To give Custom Input)</option>
                                 <option value="2" selected>Mild (7-day recovery period)</option>
                                 <option value="3">Severe (30-day recovery period)</option>
-                                <option value="4">Custom (Use the next line to have a custom input)</option>
                             {% elif patient.state|int == 3 %}
-                                <option value="1">No</option>
+                                <option value="1">No (Use the Next Line To give Custom Input)</option>
                                 <option value="2">Mild (7-day recovery period)</option>
                                 <option value="3" selected>Severe (30-day recovery period)</option>
-                                <option value="4">Custom (Use the next line to have a custom input)</option>
-                            {% elif patient.state|int == 4 %}
-                                <option value="1" >No</option>
-                                <option value="2">Mild (7-day recovery period)</option>
-                                <option value="3">Severe (30-day recovery period)</option>
-                                <option value="4" selected>Custom (Use the next line to have a custom input)</option>
                             {% endif %}
                         {% else %}
                             <option value="1" selected>No</option>
                             <option value="2">Mild (7-day recovery period)</option>
                             <option value="3">Severe (30-day recovery period)</option>
-                            <option value="4">Custom (Use the next line to have a custom input)</option>
                         {% endif %}
                     </select>                       
                 </div>
@@ -164,7 +155,7 @@
                         <span class="input-group-text">Custom Predicted Recovery Time</span>
                     </div>
                     <label for='cureTime' class="lead"></label>
-                    <input type="text" class="form-control" placeholder="How many days will the patient stay?" type="number" name="cureTime" id="cureTime" aria-label="How many days will the patient stay?">
+                    <input type="text" class="form-control" value='{{ patient.cureTime }}' type="number" name="cureTime" id="cureTime" aria-label="How many days will the patient stay?">
                 </div>
                 <button class="btn btn-outline-info rounded-pill my-4 mx-auto" type="submit" value="Save">Submit</button>
             </div>    
