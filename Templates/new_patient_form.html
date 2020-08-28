@@ -24,25 +24,11 @@
                         <span class="input-group-text">Full Name</span>
                     </div>
                     <label for='firstName' class="lead"></label>
-                    <input
-                    class="form-control"
-                    type="text"
-                    name="firstName"
-                    id="firstName"
-                    placeholder="Patient First Name"
-                    aria-label="Patient First Name"
-                    />
+                    <input class="form-control" type="text" name="firstName" id="firstName" placeholder="Patient First Name" aria-label="Patient First Name"/>
                     <label for='lastName' class="lead"></label>
-                    <input
-                    class="form-control"
-                    type="text"
-                    name="lastName"
-                    id="lastName"
-                    placeholder="Patient Last Name"
-                    aria-label="Patient Last Name"
-                    />
+                    <input class="form-control" type="text" name="lastName" id="lastName" placeholder="Patient Last Name" aria-label="Patient Last Name"/>
                 </div>
-                <p>
+                <p> 
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text">Department</span>
@@ -69,28 +55,25 @@
 
                 <div class="form-group row">
                     <div class="col-6">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">Age</span>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Age</span>
+                            </div>
+                            <input class="form-control" type="number" name='age' id='age' placeholder="Patient Age" aria-label="Patient Age"/>
                         </div>
-                        <input
-                        class="form-control"
-                        type="number"
-                        name='age' 
-                        id='age'
-                        placeholder="Patient Age"
-                        aria-label="Patient Age"
-                        />
                     </div>
                     <div class="col-6">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">Gender</span>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Gender</span>
+                            </div>
+                            <select class="custom-select" name="gender" id="gender">
+                                <option selected>Prefer not to say</option>
+                                <option value="1">Male</option>
+                                <option value="2">Female</option>
+                                <option value="3">Other</option>
+                            </select>
                         </div>
-                        <select class="custom-select" name="gender" id="gender">
-                            <option selected>Prefer not to say</option>
-                            <option value="1">Male</option>
-                            <option value="2">Female</option>
-                            <option value="3">Other</option>
-                        </select>
                     </div>
                 </div>  
                 
@@ -100,9 +83,9 @@
                     </div>
                     <label for='state' class="lead"></label>
                     <select class="custom-select" name="state" id="state">
-                        <option value="1" selected>No (Use the Next Line To give Custom Input)</option>
-                        <option value="2">Mild (7-day recovery period)</option>
-                        <option value="3">Severe (30-day recovery period)</option>
+                        <option value="1" selected>No (Use the Next Nine to Give Custom Input)</option>
+                        <option value="2">Mild (7-day Recovery Period)</option>
+                        <option value="3">Severe (30-day Recovery Period)</option>
                     </select>
                 </div>
                 <div class="input-group mb-3">
@@ -112,7 +95,7 @@
                     <label for='cureTime' class="lead"></label>
                     <input type="number" class="form-control" placeholder="How many days will the patient stay?" type="number" name="cureTime" id="cureTime" aria-label="How many days will the patient stay?">
                 </div>
-                <button class="btn btn-outline-info rounded-pill my-4 mx-auto" type="submit" value="Submit">Submit</button>
+                <button class="btn btn-outline-inverse btn-info rounded-pill mx-auto" type="submit" value="Submit">Submit</button>
             </div>    
             </form>
         </div>
