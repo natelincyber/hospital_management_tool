@@ -70,11 +70,6 @@
                             <td class="align-middle">-</td>
                         {% endif %}
 
-                        {% set checkID = patient.medID|string %}
-                        
-                        {% if checkID|length > 8 %}
-                            <meta http-equiv="refresh" content="0; /new_patient_error/{{ patient.id }}" />
-                        {% endif %}
                         
                         {% if patient.age is string %}
                             <meta http-equiv="refresh" content="0; /new_patient_error/{{ patient.id }}" />
