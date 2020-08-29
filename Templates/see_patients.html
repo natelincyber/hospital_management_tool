@@ -53,10 +53,18 @@
                         {% endif %}
 
                         {% if patient.gender %}
-                            <td class="align-middle">{{ patient.gender }}</td>
+                            {% if patient.gender == '1' %}
+                                <td class="align-middle">Male</td>
+                            {% elif patient.gender == '2' %}
+                                <td class="align-middle">Female</td>
+                            {% elif patient.gender == '3' %}
+                                <td class="align-middle">Other</td>
+                            {% endif %}
                         {% else %}
                             <td class="align-middle">-</td>
                         {% endif %}
+
+                            
 
                         {% if patient.age %}
                             <td class="align-middle">{{ patient.age }}</td>
