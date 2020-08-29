@@ -33,9 +33,12 @@ body{
 }
 
 .rounded-circle{
-    width: 40%;
+    width: 80%;
 }
 
+.card{
+    border: none;
+}
 </style>
 
 {% endblock %}
@@ -47,20 +50,23 @@ body{
 <div class="container-fluid imageContainer" style="text-align: center;">
     <br>
     <br>
-    <h1 class="display-4" style="color: #4a4a4a">About Us</h1>
+    <h1 class="display-4">About Us</h1>
+    <br>
     <br>
     <br>
     <div class="card-deck mx-auto" style="width: 60%;">
-        <div class="card text-white bg-primary shadow-lg p-3 mb-5 rounded-0">
+        <div class="card text-white bg-secondary shadow-lg p-3 mb-5 rounded-0 mr-5">
           <div class="card-body">
             <h5 class="card-title">What is HospitalHero?</h5>
-            <p class="card-text worksans">HospitalHero is versatile platform tailored to COVID-19 that allows doctors to efficiently manage and maintain their hospital. With a clean and simple UI, HospitalHero is easy to use and even easier to manage. Make HospitalHero part of your establishment today!</p>
+            <p>
+            <p class="card-text lead">HospitalHero is versatile platform tailored to COVID-19 that allows doctors to efficiently manage and maintain their hospital. With a clean and simple UI, HospitalHero is easy to use and even easier to manage. Make HospitalHero part of your establishment today!</p>
           </div>
         </div>
-        <div class="card text-white bg-primary shadow-lg p-3 mb-5 rounded-0">
+        <div class="card text-white bg-secondary shadow-lg p-3 mb-5 rounded-0 ml-5">
           <div class="card-body">
-            <h5 class="card-title">HospitalHero is 100% free</h5> 
-            <p class="card-text worksans">HospitalHero is nothing near a traditional hospital management system. However, this software is a simple and effective alternative so that hospitals in developing countries will not have to worry about the cost of buying and maintaining a professional hospital mangement tool. This is why HospitalHero is free for all. </p>
+            <h5 class="card-title">HospitalHero is 100% free</h5>
+            <p> 
+            <p class="card-text lead">HospitalHero is nothing near a traditional hospital management system. However, this software is a simple and effective alternative so that hospitals in developing countries will not have to worry about the cost of buying and maintaining a professional hospital mangement tool. This is why HospitalHero is free for all. </p>
           </div>
         </div>
     </div>
@@ -69,7 +75,7 @@ body{
     <br>
     <br>
     <div class="container">
-        <div class="jumbotron">
+        <div class="jumbotron text-white bg-secondary rounded-0">
             <h1 class="display-4">Our Mission</h1>
             <hr class="my-4">
             <p class="lead">COVID-19 is a serious virus. Every day, hundreds of people die and thousands more infected. However, there is not enough space in hospitals and clinics to provide aid to infected individuals. We want to help solve this be creating a platform to easily manage rooms and doctors to COVID-19 patients.</p>
@@ -78,14 +84,46 @@ body{
     <br>
     <br>
     <h1 class="display-4">Meet The Team!</h1>
+    <br>
+    <br>
     <div class="row">
-        <div class="col-6">
-            <img src="\static\nathanlintucirclephoto.jpg" class="rounded-circle ml-0 pl-0">
+        <div class="col-2">
         </div>
-        <div class="col-6">
-            <img src="\static\mithilsrungarapucirclephoto.jpg" class="rounded-circle mr-0 pr-0">
+        <div class="col-3">
+            <img src="\static\nathanlintucirclephoto.jpg" class="rounded-circle ml-auto pl-auto">
+        </div>
+        <div class="col-2">
+        </div>
+        <div class="col-3">
+            <img src="\static\mithilsrungarapucirclephoto.jpg" class="rounded-circle mr-auto pr-auto">
+        </div>
+        <div class="col-2">
         </div>
     </div>
+    <div class="row">
+        <div class="col-2">
+        </div>
+        <div class="col-3">
+            <p>
+            <h5 class="display-4">Nathan Lintu</h5>
+            <p>
+            <h5>Backend Developer</h5>
+        </div>
+        <div class="col-1">
+        </div>
+        <div class="col-5">
+            <p>
+            <h5 class="display-4">Mithil Srungarapu</h4>
+            <p>
+            <h5>Frontend Developer</h5>
+        </div>
+        <div class="col-1">
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
 </div>
 
 {% endblock %}
