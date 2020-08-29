@@ -19,14 +19,14 @@
         <table class="table table-striped" style="text-align: center;">
             <thead class="thead-dark">  
             <tr>
-                <th scope="col">Medical Identification</th>
-                <th scope="col">Patient</th>
+                <th scope="col">Patient ID</th>
+                <th scope="col">Doctor ID</th>
+                <th scope="col">Patient Name</th>
+                <th scope="col">Department</th>
                 <th scope="col">Gender</th>
                 <th scope="col">Age</th>
                 <th scope="col">Date Admitted</th>
-                <th scope="col">Patient Discharge Date</th>
-                <th scope="col">Department</th>
-                <th scope="col">Doctor ID</th>
+                <th scope="col">Discharge Date</th>
                 <th scope="col"></th>
             </tr>
             </thead>
@@ -42,8 +42,20 @@
                             {% endif %}
                         </th>
 
+                        {% if patient.doctorID %}
+                            <td class="align-middle">{{ patient.doctorID }}</td>
+                        {% else %}
+                            <td class="align-middle">-</td>
+                        {% endif %}
+
                         {% if patient.firstName and patient.lastName and patient.medID %}
                             <td class="align-middle">{{ patient.firstName }} {{ patient.lastName }}</td>
+                        {% else %}
+                            <td class="align-middle">-</td>
+                        {% endif %}
+
+                        {% if patient.field %}
+                            <td class="align-middle" style="padding:0 0px 0 0px;">{{ patient.field }}</td>
                         {% else %}
                             <td class="align-middle">-</td>
                         {% endif %}
@@ -267,17 +279,8 @@
                         {% endif %}
 
                             
-                        {% if patient.field %}
-                            <td class="align-middle" style="padding:0 0px 0 0px;">{{ patient.field }}</td>
-                        {% else %}
-                            <td class="align-middle">-</td>
-                        {% endif %}
 
-                        {% if patient.doctorID %}
-                            <td class="align-middle">{{ patient.doctorID }}</td>
-                        {% else %}
-                            <td class="align-middle">-</td>
-                        {% endif %}
+
 
                         <td class="align-middle"><a class='btn' href='/see_patients/edit/{{ patient.id }}'><img src="/static/edit.png"></a><a class='btn' href='/see_patients/delete/{{ patient.id }}'><img src="/static/trash.png"></a></td>
                     </tr>
