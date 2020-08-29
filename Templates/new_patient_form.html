@@ -3,7 +3,22 @@
 {% block head %}
 
 <style>
+
+body {
+    overflow-y:hidden;
+}
+
+.imageContainer {
+    background-color: #ff834f;
+    background-color: #ff9e59;
+    background-color: #ff9e59;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 100 60'%3E%3Cg %3E%3Crect fill='%23ff9e59' width='11' height='11'/%3E%3Crect fill='%23ff9d58' x='10' width='11' height='11'/%3E%3Crect fill='%23ff9b57' y='10' width='11' height='11'/%3E%3Crect fill='%23ff9a55' x='20' width='11' height='11'/%3E%3Crect fill='%23ff9954' x='10' y='10' width='11' height='11'/%3E%3Crect fill='%23ff9753' y='20' width='11' height='11'/%3E%3Crect fill='%23ff9652' x='30' width='11' height='11'/%3E%3Crect fill='%23ff9451' x='20' y='10' width='11' height='11'/%3E%3Crect fill='%23ff9350' x='10' y='20' width='11' height='11'/%3E%3Crect fill='%23ff924f' y='30' width='11' height='11'/%3E%3Crect fill='%23ff904e' x='40' width='11' height='11'/%3E%3Crect fill='%23ff8f4d' x='30' y='10' width='11' height='11'/%3E%3Crect fill='%23ff8d4c' x='20' y='20' width='11' height='11'/%3E%3Crect fill='%23ff8c4b' x='10' y='30' width='11' height='11'/%3E%3Crect fill='%23ff8a4a' y='40' width='11' height='11'/%3E%3Crect fill='%23ff8949' x='50' width='11' height='11'/%3E%3Crect fill='%23ff8748' x='40' y='10' width='11' height='11'/%3E%3Crect fill='%23ff8647' x='30' y='20' width='11' height='11'/%3E%3Crect fill='%23ff8446' x='20' y='30' width='11' height='11'/%3E%3Crect fill='%23ff8345' x='10' y='40' width='11' height='11'/%3E%3Crect fill='%23ff8144' y='50' width='11' height='11'/%3E%3Crect fill='%23ff8043' x='60' width='11' height='11'/%3E%3Crect fill='%23ff7e42' x='50' y='10' width='11' height='11'/%3E%3Crect fill='%23ff7d41' x='40' y='20' width='11' height='11'/%3E%3Crect fill='%23ff7b40' x='30' y='30' width='11' height='11'/%3E%3Crect fill='%23ff7940' x='20' y='40' width='11' height='11'/%3E%3Crect fill='%23ff783f' x='10' y='50' width='11' height='11'/%3E%3Crect fill='%23ff763e' x='70' width='11' height='11'/%3E%3Crect fill='%23ff743d' x='60' y='10' width='11' height='11'/%3E%3Crect fill='%23ff733d' x='50' y='20' width='11' height='11'/%3E%3Crect fill='%23ff713c' x='40' y='30' width='11' height='11'/%3E%3Crect fill='%23ff6f3b' x='30' y='40' width='11' height='11'/%3E%3Crect fill='%23ff6e3b' x='20' y='50' width='11' height='11'/%3E%3Crect fill='%23ff6c3a' x='80' width='11' height='11'/%3E%3Crect fill='%23ff6a39' x='70' y='10' width='11' height='11'/%3E%3Crect fill='%23ff6839' x='60' y='20' width='11' height='11'/%3E%3Crect fill='%23ff6738' x='50' y='30' width='11' height='11'/%3E%3Crect fill='%23ff6537' x='40' y='40' width='11' height='11'/%3E%3Crect fill='%23ff6337' x='30' y='50' width='11' height='11'/%3E%3Crect fill='%23ff6136' x='90' width='11' height='11'/%3E%3Crect fill='%23ff5f36' x='80' y='10' width='11' height='11'/%3E%3Crect fill='%23ff5d35' x='70' y='20' width='11' height='11'/%3E%3Crect fill='%23ff5b35' x='60' y='30' width='11' height='11'/%3E%3Crect fill='%23ff5934' x='50' y='40' width='11' height='11'/%3E%3Crect fill='%23ff5734' x='40' y='50' width='11' height='11'/%3E%3Crect fill='%23ff5534' x='90' y='10' width='11' height='11'/%3E%3Crect fill='%23ff5333' x='80' y='20' width='11' height='11'/%3E%3Crect fill='%23ff5133' x='70' y='30' width='11' height='11'/%3E%3Crect fill='%23ff4e33' x='60' y='40' width='11' height='11'/%3E%3Crect fill='%23ff4c32' x='50' y='50' width='11' height='11'/%3E%3Crect fill='%23ff4a32' x='90' y='20' width='11' height='11'/%3E%3Crect fill='%23ff4732' x='80' y='30' width='11' height='11'/%3E%3Crect fill='%23ff4531' x='70' y='40' width='11' height='11'/%3E%3Crect fill='%23ff4231' x='60' y='50' width='11' height='11'/%3E%3Crect fill='%23ff3f31' x='90' y='30' width='11' height='11'/%3E%3Crect fill='%23ff3d31' x='80' y='40' width='11' height='11'/%3E%3Crect fill='%23ff3a30' x='70' y='50' width='11' height='11'/%3E%3Crect fill='%23ff3730' x='90' y='40' width='11' height='11'/%3E%3Crect fill='%23ff3330' x='80' y='50' width='11' height='11'/%3E%3Crect fill='%23ff3030' x='90' y='50' width='11' height='11'/%3E%3C/g%3E%3C/svg%3E");
+    background-attachment: fixed;
+    background-size: cover;
+}
+
 .card{
+    border: none;
     margin: auto;
     float: none;
     margin-bottom: 10px;
@@ -15,89 +30,97 @@
 {% block title %}New Patient{% endblock %}
 
 {% block body %}
-    <div class="card bg-light mb-3" style="max-width: 40rem; text-align: center;">
-        <h1 class="card-header text-white" style="background-color: #292b2c;">Add New Patient</h1>
-        <div class="card-body">
-            <form action='/see_patients' method='POST'>
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text">Full Name</span>
-                    </div>
-                    <label for='firstName' class="lead"></label>
-                    <input class="form-control" type="text" name="firstName" id="firstName" placeholder="Patient First Name" aria-label="Patient First Name"/>
-                    <label for='lastName' class="lead"></label>
-                    <input class="form-control" type="text" name="lastName" id="lastName" placeholder="Patient Last Name" aria-label="Patient Last Name"/>
-                </div>
-                <p> 
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text">Department</span>
-                    </div>
-                    <label for='field' class="lead"></label>
-                    <input type="text" class="form-control" placeholder="Admitted Department" type="text" name="field" id="field" aria-label="Admitted Department">
-                </div>
-
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text">Doctor Identification</span>
-                    </div>
-                    <label for='doctorID' class="lead"></label>
-                    <input type="number" class="form-control" placeholder="Doctor Identification Number" type="text" name="doctorID" id="doctorID" aria-label="Doctor Identification Number">
-                </div>
-
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text">Patient Medical Identification</span>
-                    </div>
-                    <label for='medID' class="lead"></label>
-                    <input type="number" class="form-control" placeholder="Enter your patient's medical id number" type="number" name="medID" id="medID" aria-label="Medical Identification Number">
-                </div>
-
-                <div class="form-group row">
-                    <div class="col-6">
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">Age</span>
-                            </div>
-                            <input class="form-control" type="number" name='age' id='age' placeholder="Patient Age" aria-label="Patient Age"/>
+    <div class="container-fluid imageContainer">
+        <br>
+        <br>
+        <div class="card bg-light mb-3" style="max-width: 40rem; text-align: center;">
+            <h1 class="card-header text-white" style="background-color: #292b2c;">Add New Patient</h1>
+            <div class="card-body">
+                <form action='/see_patients' method='POST'>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Full Name</span>
                         </div>
+                        <label for='firstName' class="lead"></label>
+                        <input class="form-control" type="text" name="firstName" id="firstName" placeholder="Patient First Name" aria-label="Patient First Name"/>
+                        <label for='lastName' class="lead"></label>
+                        <input class="form-control" type="text" name="lastName" id="lastName" placeholder="Patient Last Name" aria-label="Patient Last Name"/>
                     </div>
-                    <div class="col-6">
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">Gender</span>
-                            </div>
-                            <select class="custom-select" name="gender" id="gender">
-                                <option selected>Prefer not to say</option>
-                                <option value="1">Male</option>
-                                <option value="2">Female</option>
-                                <option value="3">Other</option>
-                            </select>
+                    <p> 
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Department</span>
                         </div>
+                        <label for='field' class="lead"></label>
+                        <input type="text" class="form-control" placeholder="Admitted Department" type="text" name="field" id="field" aria-label="Admitted Department">
                     </div>
-                </div>  
-                
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text">COVID-19?</span>
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Doctor Identification</span>
+                        </div>
+                        <label for='doctorID' class="lead"></label>
+                        <input type="number" class="form-control" placeholder="Doctor Identification Number" type="text" name="doctorID" id="doctorID" aria-label="Doctor Identification Number">
                     </div>
-                    <label for='state' class="lead"></label>
-                    <select class="custom-select" name="state" id="state">
-                        <option value="1" selected>No (Use the Next Nine to Give Custom Input)</option>
-                        <option value="2">Mild (7-day Recovery Period)</option>
-                        <option value="3">Severe (30-day Recovery Period)</option>
-                    </select>
-                </div>
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text">Custom Predicted Recovery Time</span>
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Patient Medical Identification</span>
+                        </div>
+                        <label for='medID' class="lead"></label>
+                        <input type="number" class="form-control" placeholder="Enter your patient's medical id number" type="number" name="medID" id="medID" aria-label="Medical Identification Number">
                     </div>
-                    <label for='cureTime' class="lead"></label>
-                    <input type="number" class="form-control" placeholder="How many days will the patient stay?" type="number" name="cureTime" id="cureTime" aria-label="How many days will the patient stay?">
-                </div>
-                <button class="btn btn-outline-inverse btn-info rounded-pill mx-auto" type="submit" value="Submit">Submit</button>
-            </div>    
-            </form>
+
+                    <div class="form-group row">
+                        <div class="col-6">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Age</span>
+                                </div>
+                                <input class="form-control" type="number" name='age' id='age' placeholder="Patient Age" aria-label="Patient Age"/>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Gender</span>
+                                </div>
+                                <select class="custom-select" name="gender" id="gender">
+                                    <option selected>Prefer not to say</option>
+                                    <option value="1">Male</option>
+                                    <option value="2">Female</option>
+                                    <option value="3">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>  
+                    
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">COVID-19?</span>
+                        </div>
+                        <label for='state' class="lead"></label>
+                        <select class="custom-select" name="state" id="state">
+                            <option value="1" selected>No (Use the Next Nine to Give Custom Input)</option>
+                            <option value="2">Mild (7-day Recovery Period)</option>
+                            <option value="3">Severe (30-day Recovery Period)</option>
+                        </select>
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Custom Predicted Recovery Time</span>
+                        </div>
+                        <label for='cureTime' class="lead"></label>
+                        <input type="number" class="form-control" placeholder="How many days will the patient stay?" type="number" name="cureTime" id="cureTime" aria-label="How many days will the patient stay?">
+                    </div>
+                    <button class="btn btn-outline-inverse btn-info rounded-pill mx-auto" type="submit" value="Submit">Submit</button>
+                </div>    
+                </form>
+            </div>
+            <br>
+            <br>
+            <br>
+            <br>
         </div>
     </div>
 
