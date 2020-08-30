@@ -1,11 +1,24 @@
 {% extends 'base.html' %}
 
 {% block head %}
+{% if see_patients|length == 0 %}
+    <style>
+        body
+        {
+            overflow-y:hidden
+        }
+    </style>
+{% else %}
+    <style>
+        body
+        {
+          overflow-y:visible  
+        }
+    </style>
+{% endif %}
+
 <style>
 
-body{
-    overflow-y: hidden;
-}
 
 .jumbotron {
     background-color: #ff7700;
